@@ -1,6 +1,7 @@
 package th.co.cinfo.chumchon.models;
 
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import java.net.URLConnection;
 public class CallApi extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... urls) {
+
         try {
             URL url = new URL(urls[0]);
 
@@ -27,7 +29,7 @@ public class CallApi extends AsyncTask<String, Void, String> {
 
             InputStream inputStream = null;
 
-            if (httpURLConnection.getResponseCode() == HttpURLConnection.HTTP_OK){
+            if (httpURLConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 inputStream = httpURLConnection.getInputStream();
             }
 

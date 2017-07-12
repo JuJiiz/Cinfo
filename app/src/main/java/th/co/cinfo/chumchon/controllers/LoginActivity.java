@@ -1,8 +1,10 @@
 package th.co.cinfo.chumchon.controllers;
 
+import android.net.ConnectivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +17,6 @@ import java.security.NoSuchAlgorithmException;
 
 import th.co.cinfo.chumchon.R;
 import th.co.cinfo.chumchon.models.*;
-
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     Button btnLogin;
@@ -43,30 +44,36 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         if (v == btnLogin) {
-            try {
-                pUsername = etUsername.getText().toString();
-                pPassword = Sha1Hash.SHA1(etPassword.getText().toString());
-            } catch (NoSuchAlgorithmException e) {
-                e.printStackTrace();
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-            String loginStatus = ModelLogin.getByName(pUsername, pPassword,"status");
-            String loginToken = ModelLogin.getByName(pUsername, pPassword,"token");
+            ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo netInfo = manager.getActiveNetworkInfo();
+                if(netInfo != null && netInfo.isConnectedOrConnecting()){
+                    try {
+                        pUsername = etUsername.getText().toString();
+                        pPassword = Sha1Hash.SHA1(etPassword.getText().toString());
 
-            SharedPreferences sp = getSharedPreferences("myToken", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sp.edit();
-            editor.putString("strToken", loginToken);
-            editor.commit();
+                        String loginStatus = ModelLogin.getByName(pUsername, pPassword,"status");
+                        String loginToken = ModelLogin.getByName(pUsername, pPassword,"token");
 
-            //Toast.makeText(this,"Login Token: " + sp.getString("strToken", "NoData"), Toast.LENGTH_SHORT).show();
-
-            if(loginStatus.equals("OK")){
-                intent = new Intent(getApplicationContext(), HomeActivity.class);
-                startActivity(intent);
-            }else{
-                Toast.makeText(this,"Status: " + loginStatus, Toast.LENGTH_SHORT).show();
-            }
+                        SharedPreferences sp = getSharedPreferences("myToken", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sp.edit();
+                        editor.putString("strToken", loginToken);
+                        editor.commit();
+                        //Toast.makeText(this,"Login Token: " + sp.getString("strToken", "NoData"), Toast.LENGTH_SHORT).show();
+                        if(loginStatus.equals("OK")){
+                            intent = new Intent(getApplicationContext(), HomeActivity.class);
+                            startActivity(intent);
+                        }else{
+                            Toast.makeText(this,"ชื่อผู้ใช้หรือรหัสผ่าน ไม่ถูกต้อง", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (NoSuchAlgorithmException e) {
+                        e.printStackTrace();
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
+                    //Toast.makeText(this,"Connected", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(this,"การเชื่อมต่อมีปัญหา", Toast.LENGTH_SHORT).show();
+                }
         }
     }
 }

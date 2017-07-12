@@ -14,7 +14,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_weight="1">
-
     </LinearLayout>
 
     <LinearLayout
@@ -51,7 +50,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="เข้าสู่ระบบ" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -60,7 +58,6 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical">
-
     </LinearLayout>
 
 
