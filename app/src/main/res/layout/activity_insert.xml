@@ -26,7 +26,7 @@
             android:adjustViewBounds="true"
             android:padding="20dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/f001_n" />
+            android:src="@drawable/household" />
 
         <ImageButton
             android:id="@+id/ibtCommucial"
@@ -40,7 +40,7 @@
             android:adjustViewBounds="true"
             android:padding="20dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/f002_n" />
+            android:src="@drawable/commucial" />
     </LinearLayout>
 
     <LinearLayout
@@ -50,7 +50,7 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/ibtLocalGover"
+            android:id="@+id/ibtLocalGovern"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="5dp"
@@ -61,7 +61,7 @@
             android:adjustViewBounds="true"
             android:padding="20dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/f003_b" />
+            android:src="@drawable/localgovern" />
 
         <ImageButton
             android:id="@+id/ibtCommunity"
@@ -75,7 +75,7 @@
             android:adjustViewBounds="true"
             android:padding="20dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/f004_n"/>
+            android:src="@drawable/community"/>
     </LinearLayout>
 
     <LinearLayout
@@ -86,7 +86,7 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/ibtInsert44"
+            android:id="@+id/ibtForms44"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="5dp"
@@ -97,7 +97,7 @@
             android:adjustViewBounds="true"
             android:padding="20dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/f005_n"/>
+            android:src="@drawable/forms44"/>
 
     </LinearLayout>
 

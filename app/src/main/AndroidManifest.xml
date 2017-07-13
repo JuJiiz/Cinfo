@@ -22,7 +22,21 @@
         <activity android:name=".controllers.HomeActivity" />
         <activity android:name=".controllers.InsertActivity" />
         <activity android:name=".controllers.ShowDataActivity" />
-        <activity android:name=".controllers.SettingActivity"></activity>
+        <activity android:name=".controllers.SettingActivity" />
+        <activity android:name=".controllers.F001" />
+        <activity android:name=".controllers.Forms44Activity" />
+        <activity android:name=".controllers.F002" />
+        <activity android:name=".controllers.F003" />
+        <activity android:name=".controllers.F004" />
+        <activity android:name=".controllers.F005" />
+        <activity android:name=".controllers.HouseholdActivity" />
+        <activity android:name=".controllers.CommucialActivity" />
+        <activity android:name=".controllers.LocalGovernActivity" />
+        <activity android:name=".controllers.CommunityActivity" />
+        <activity android:name=".controllers.F001Activity" />
+        <activity android:name=".controllers.F002Activity" />
+        <activity android:name=".controllers.F003Activity" />
+        <activity android:name=".controllers.F004Activity"></activity>
     </application>
 
 </manifest>

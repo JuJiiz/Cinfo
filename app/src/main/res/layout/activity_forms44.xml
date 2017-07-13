@@ -2,9 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="2">
+    android:orientation="vertical"
+    android:weightSum="2"
+    tools:context="th.co.cinfo.chumchon.controllers.Forms44Activity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,24 +15,32 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/imageButtonInsert"
+            android:id="@+id/ibtF001"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0dp"
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:padding="20dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/save01"/>
+            android:src="@drawable/f001" />
 
         <ImageButton
-            android:id="@+id/imageButtonShowData"
+            android:id="@+id/ibtF002"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0dp"
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:padding="20dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/view01"/>
+            android:src="@drawable/f002" />
     </LinearLayout>
 
     <LinearLayout
@@ -40,24 +50,32 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/imageButtonMap"
+            android:id="@+id/ibtF003"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0dp"
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:padding="20dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/map01" />
+            android:src="@drawable/f003" />
 
         <ImageButton
-            android:id="@+id/imageButtonSetting"
+            android:id="@+id/ibtF004"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0dp"
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:padding="20dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/private01"/>
+            android:src="@drawable/f004" />
     </LinearLayout>
 
 </LinearLayout>

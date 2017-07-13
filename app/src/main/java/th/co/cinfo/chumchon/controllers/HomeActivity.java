@@ -21,10 +21,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         init();
-        imageButtonInsert.setOnClickListener(this);
-        imageButtonShowData.setOnClickListener(this);
-        imageButtonMap.setOnClickListener(this);
-        imageButtonSetting.setOnClickListener(this);
     }
 
     private void init() {
@@ -32,6 +28,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         imageButtonShowData = (ImageButton) findViewById(R.id.imageButtonShowData);
         imageButtonMap = (ImageButton) findViewById(R.id.imageButtonMap);
         imageButtonSetting = (ImageButton) findViewById(R.id.imageButtonSetting);
+
+        imageButtonInsert.setOnClickListener(this);
+        imageButtonShowData.setOnClickListener(this);
+        imageButtonMap.setOnClickListener(this);
+        imageButtonSetting.setOnClickListener(this);
     }
 
     @Override
