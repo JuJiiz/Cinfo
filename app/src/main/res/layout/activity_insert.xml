@@ -8,97 +8,70 @@
     android:weightSum="3"
     tools:context="th.co.cinfo.chumchon.controllers.InsertActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <ImageButton
-            android:id="@+id/ibtHousehold"
-            android:layout_width="0dp"
+        <TableLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="0dp"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:padding="20dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/household" />
+            android:stretchColumns="0,1">
+            <TableRow>
+                <ImageButton
+                    android:id="@+id/ibtHousehold"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_column="0"
+                    android:adjustViewBounds="true"
+                    android:padding="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/household" />
 
-        <ImageButton
-            android:id="@+id/ibtCommucial"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="0dp"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:padding="20dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/commucial" />
-    </LinearLayout>
+                <ImageButton
+                    android:id="@+id/ibtCommucial"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_column="1"
+                    android:adjustViewBounds="true"
+                    android:padding="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/commucial" />
+            </TableRow>
+            <TableRow>
+                <ImageButton
+                    android:id="@+id/ibtLocalGovern"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_column="0"
+                    android:adjustViewBounds="true"
+                    android:padding="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/localgovern" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+                <ImageButton
+                    android:id="@+id/ibtCommunity"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_column="1"
+                    android:adjustViewBounds="true"
+                    android:padding="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/community"/>
+            </TableRow>
+            <TableRow>
+                <ImageButton
+                    android:id="@+id/ibtForms44"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_column="0"
+                    android:adjustViewBounds="true"
+                    android:padding="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/forms44"/>
+            </TableRow>
+        </TableLayout>
 
-        <ImageButton
-            android:id="@+id/ibtLocalGovern"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="0dp"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:padding="20dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/localgovern" />
-
-        <ImageButton
-            android:id="@+id/ibtCommunity"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="0dp"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:padding="20dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/community"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:weightSum="2"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/ibtForms44"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="0dp"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:padding="20dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/forms44"/>
-
-    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
