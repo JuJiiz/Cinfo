@@ -13,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".controllers.LoginActivity">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".controllers.HomeActivity" />
         <activity android:name=".controllers.InsertActivity" />
@@ -27,17 +30,8 @@
         <activity android:name=".controllers.F001Activity" />
         <activity android:name=".controllers.F002Activity" />
         <activity android:name=".controllers.F003Activity" />
-        <activity android:name=".controllers.F004Activity" />=
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".controllers.F004Activity" />
+        <activity android:name=".controllers.MainActivity">
         </activity>
     </application>
 

@@ -1,8 +1,10 @@
-package th.co.cinfo.chumchon;
+package th.co.cinfo.chumchon.controllers;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,8 +15,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import th.co.cinfo.chumchon.R;
+import th.co.cinfo.chumchon.controllers.HouseholdActivity;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,13 +79,43 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.navF001) {
-            // Handle the camera action
-        } else if (id == R.id.navF002) {
+        Fragment fragment = null;
 
-        } else if (id == R.id.navF003) {
 
-        } else if (id == R.id.navF004) {
+        if (id == R.id.navHousehold) {
+
+        }
+        if (id == R.id.navCommucial) {
+
+        }
+        if (id == R.id.navLocalGovern) {
+
+        }
+        if (id == R.id.navCommunity) {
+
+        }
+        if (id == R.id.navForms44) {
+
+        }
+        if (id == R.id.navSingleReport) {
+
+        }
+        if (id == R.id.navIncludeReport) {
+
+        }
+        if (id == R.id.navPersonal) {
+
+        }
+        if (id == R.id.navRole) {
+
+        }
+        if (id == R.id.navCheck) {
+
+        }
+        if (id == R.id.navVille) {
+
+        }
+        if (id == R.id.navTr14) {
 
         }
 
@@ -87,4 +123,10 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+   /* private void hideItem()
+    {
+        Menu nav_Menu = navigationView.getMenu();
+        nav_Menu.findItem(R.id.nav_settings).setVisible(false);
+    }*/
 }

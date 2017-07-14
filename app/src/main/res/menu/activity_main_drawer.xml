@@ -1,52 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="บันทึกข้อมูล" >
+    <item android:title="บันทึกข้อมูล">
         <menu>
-            <item
-                android:id="@+id/navHousehold"
-                android:icon="@drawable/household"
-                android:title="ครัวเรือนประชากรและทรัพย์สินประชากร" />
-            <item
-                android:id="@+id/navCommucial"
-                android:icon="@drawable/commucial"
-                android:title="ทรัพย์สินกิจการพานิชย์" />
-            <item
-                android:id="@+id/navLocalGovern"
-                android:icon="@drawable/localgovern"
-                android:title="ทรัพย์สินองค์กรปกครองส่วนท้องถิ่น" />
-            <item
-                android:id="@+id/navCommunity"
-                android:icon="@drawable/community"
-                android:title="ทรัพย์สินชุมชน/หมู่บ้าน" />
-
-            <item
-                android:id="@+id/navForms44"
-                android:icon="@drawable/community"
-                android:title="บันทึกข้อมุลทั่วไป 44 แบบฟอร์ม" />
+        <item
+            android:id="@+id/navHousehold"
+            android:title="ครัวเรือนประชากรและทรัพย์สินประชากร" />
+        <item
+            android:id="@+id/navCommucial"
+            android:title="ทรัพย์สินกิจการพานิชย์" />
+        <item
+            android:id="@+id/navLocalGovern"
+            android:title="ทรัพย์สินองค์กรปกครองส่วนท้องถิ่น" />
+        <item
+            android:id="@+id/navCommunity"
+            android:title="ทรัพย์สินชุมชน/หมู่บ้าน" />
+        <item
+            android:id="@+id/navForms44"
+            android:title="บันทึกข้อมูลทั่วไป 44 แบบฟอร์ม">
+        </item>
         </menu>
     </item>
 
-    <group android:title="ข้อมุลทั่วไป44แบบฟอร์ม" >
+    <item android:title="ดูข้อมูล">
         <menu>
             <item
-                android:id="@+id/navF001"
-                android:icon="@drawable/f001"
-                android:title="บลาบลา" />
+                android:id="@+id/navSingleReport"
+                android:title="รายงานเดี่ยว" />
             <item
-                android:id="@+id/navF002"
-                android:icon="@drawable/f002"
-                android:title="บลาบลา" />
-            <item
-                android:id="@+id/navF003"
-                android:icon="@drawable/f003"
-                android:title="บลาบลา" />
-            <item
-                android:id="@+id/navF004"
-                android:icon="@drawable/f004"
-                android:title="บลาบลา" />
+                android:id="@+id/navIncludeReport"
+                android:title="รายงานรวม" />
         </menu>
-    </group>
+    </item>
 
+    <item android:title="แผนที่">
+    </item>
+
+    <item android:title="ส่วนตัว">
+        <menu>
+            <item
+                android:id="@+id/navPersonal"
+                android:title="ส่วนบุคคล" />
+            <item
+                android:id="@+id/navRole"
+                android:title="จัดการสิทธิ" />
+            <item
+                android:id="@+id/navCheck"
+                android:title="ตรวจสอบ" />
+            <item
+                android:id="@+id/navVille"
+                android:title="หมู่บ้าน" />
+            <item
+                android:id="@+id/navTr14"
+                android:title="ทร.14">
+            </item>
+        </menu>
+    </item>
 
 </menu>

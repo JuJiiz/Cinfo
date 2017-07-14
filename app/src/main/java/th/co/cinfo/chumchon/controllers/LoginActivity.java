@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         editor.commit();
                         //Toast.makeText(this,"Login Token: " + sp.getString("strToken", "NoData"), Toast.LENGTH_SHORT).show();
                         if(loginStatus.equals("OK")){
-                            intent = new Intent(getApplicationContext(), HomeActivity.class);
+                            intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
                         }else{
                             Toast.makeText(this,"ชื่อผู้ใช้หรือรหัสผ่าน ไม่ถูกต้อง", Toast.LENGTH_SHORT).show();
