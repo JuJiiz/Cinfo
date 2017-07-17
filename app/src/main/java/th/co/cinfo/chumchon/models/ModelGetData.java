@@ -13,8 +13,8 @@ import java.util.concurrent.ExecutionException;
  * Created by JuJiiz on 17/7/2560.
  */
 
-public class ModelCommucial {
-    public static String getByName(Context context, String pname) {
+public class ModelGetData {
+    public static String getByName(Context context, String apiURL, String pname) {
         String result = "";
         SharedPreferences sp = context.getSharedPreferences("myStorage", Context.MODE_PRIVATE);
         String token = sp.getString("token","");
@@ -26,7 +26,7 @@ public class ModelCommucial {
         Log.d("XXXXXXXXXXXX", "districtCode: "+districtCode);
 
         try {
-            String url = "https://api.cinfo.co.th/v3/getGroupAsset_T2?DISTRICT_CODE=" + districtCode + "&token=" + token;
+            String url = apiURL + "DISTRICT_CODE=" + districtCode + "&token=" + token;
             String strGetJson = new CallApi().execute(url).get();
 
             Log.d("XXXXXXXXXXXX", "strGetJson: "+strGetJson);

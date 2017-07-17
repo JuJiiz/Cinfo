@@ -33,11 +33,11 @@ public class HouseholdActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_household);
         ModelToken.checkToken(this);
         init();
+        getData();
     }
 
     void init(){
         linearScroll = (LinearLayout) findViewById(R.id.linearScroll);
-        listViewHousehold = (ListView) findViewById(R.id.listHousehold);
         btnRefresh = (Button) findViewById(R.id.btnRefresh);
         btnRefresh.setOnClickListener(this);
 
@@ -46,11 +46,18 @@ public class HouseholdActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
+        if(v == btnRefresh){
+            getData();
+        }
+    }
+
+    private void getData(){
+        String apiURL = "https://api.cinfo.co.th/v2/getTaskList_F01_01?";
         ListView listView = (ListView) findViewById(R.id.listHousehold);
         LIST = new ArrayList<HashMap<String, String>>();
         JSONObject jsonObject = null;
         try {
-            String strJsonObj = ModelHousehold.getByName(this,"Houses");
+            String strJsonObj = ModelGetData.getByName(this, apiURL, "Houses");
             JSONArray jsonArray = new JSONArray(strJsonObj);
             for (int i=0 ; i < jsonArray.length(); i++){
                 JSONObject jsonObj = jsonArray.getJSONObject(i);

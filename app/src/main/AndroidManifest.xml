@@ -30,9 +30,8 @@
         <activity android:name=".controllers.F001Activity" />
         <activity android:name=".controllers.F002Activity" />
         <activity android:name=".controllers.F003Activity" />
-        <activity android:name=".controllers.F004Activity" />
-        <activity android:name=".controllers.MainActivity">
-        </activity>
+        <activity android:name=".controllers.F004Activity"/>
+        <activity android:name=".controllers.MainActivity"/>
     </application>
 
 </manifest>

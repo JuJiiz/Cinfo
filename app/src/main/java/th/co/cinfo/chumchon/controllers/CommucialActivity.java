@@ -16,8 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import th.co.cinfo.chumchon.R;
-import th.co.cinfo.chumchon.models.ModelCommucial;
-import th.co.cinfo.chumchon.models.ModelHousehold;
+import th.co.cinfo.chumchon.models.ModelGetData;
 import th.co.cinfo.chumchon.models.ModelToken;
 
 public class CommucialActivity extends AppCompatActivity implements View.OnClickListener{
@@ -34,11 +33,11 @@ public class CommucialActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_commucial);
         ModelToken.checkToken(this);
         init();
+        getData();
     }
 
-    void init(){
+    private void init(){
         linearScroll = (LinearLayout) findViewById(R.id.linearScroll);
-        listCommucial = (ListView) findViewById(R.id.listCommucial);
         btnRefresh = (Button) findViewById(R.id.btnRefresh);
 
         btnRefresh.setOnClickListener(this);
@@ -46,11 +45,18 @@ public class CommucialActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
+        if(v == btnRefresh){
+            getData();
+        }
+    }
+
+    private void getData(){
+        String apiURL = "https://api.cinfo.co.th/v3/getGroupAsset_T2?";
         ListView listView = (ListView) findViewById(R.id.listCommucial);
         LIST = new ArrayList<HashMap<String, String>>();
         JSONObject jsonObject = null;
         try {
-            String strJsonObj = ModelCommucial.getByName(this,"task");
+            String strJsonObj = ModelGetData.getByName(this,apiURL,"task");
             JSONArray jsonArray = new JSONArray(strJsonObj);
             for (int i=0 ; i < jsonArray.length(); i++){
                 JSONObject jsonObj = jsonArray.getJSONObject(i);
@@ -62,9 +68,9 @@ public class CommucialActivity extends AppCompatActivity implements View.OnClick
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        SimpleAdapter simpleAdapter = new SimpleAdapter(this, LIST, R.layout.view_commucial_item,
+        SimpleAdapter simpleAdapter = new SimpleAdapter(this, LIST, R.layout.view_column_item,
                 new String[]{NO_COMMUCIAL, NAME_COMMUCIAL_OWNER},
-                new int[]{R.id.tvNoCommucial, R.id.tvNameCommucialOwner}
+                new int[]{R.id.tvNumber, R.id.tvOwnerName}
         );
         listView.setAdapter(simpleAdapter);
     }

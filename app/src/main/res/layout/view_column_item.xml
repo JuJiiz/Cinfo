@@ -6,7 +6,7 @@
     android:weightSum="3">
 
     <TextView
-        android:id="@+id/tvNoCommucial"
+        android:id="@+id/tvNumber"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -14,14 +14,14 @@
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/tvNameCommucialOwner"
+        android:id="@+id/tvOwnerName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
         android:text="TextView" />
     <ProgressBar
-        android:id="@+id/pbCommucial"
+        android:id="@+id/pbColumn"
         style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
