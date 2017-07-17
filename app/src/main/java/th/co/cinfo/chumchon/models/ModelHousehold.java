@@ -12,7 +12,7 @@ import java.util.concurrent.ExecutionException;
 public class ModelHousehold {
     public static String getByName(Context context, String pname) {
         String result = "";
-        SharedPreferences sp = context.getSharedPreferences("My_Storage", Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences("myStorage", Context.MODE_PRIVATE);
         String token = sp.getString("token","");
         Log.d("XXXXXXXXXXXX", "token: "+token);
         String districtCode = ModelToken.getByName(token,"cus_data.DISTRICT_CODE");

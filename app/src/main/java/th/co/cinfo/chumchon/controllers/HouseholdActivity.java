@@ -17,17 +17,18 @@ import th.co.cinfo.chumchon.models.*;
 
 public class HouseholdActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private String NO_HOUSE_HOLD = "number";
-    private String NAME_HOUSE_HOLD = "name";
-    private String STATUS_HOUSE_HOLD = "status";
-    private ArrayList<HashMap<String, String>> LIST;
-    private ListView listViewHousehold;
-    private Button btnRefresh;
+    String NO_HOUSE_HOLD = "number";
+    String NAME_HOUSE_HOLD = "name";
+    String STATUS_HOUSE_HOLD = "status";
+    ArrayList<HashMap<String, String>> LIST;
+    ListView listViewHousehold;
+    Button btnRefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_household);
+        ModelToken.checkToken(this);
         init();
     }
 

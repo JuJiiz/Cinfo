@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import th.co.cinfo.chumchon.R;
+import th.co.cinfo.chumchon.models.ModelToken;
 
 /**
  * Created by thanatat on 7/5/17.
@@ -20,6 +21,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        ModelToken.checkToken(this);
         init();
     }
 

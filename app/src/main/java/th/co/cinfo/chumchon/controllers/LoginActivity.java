@@ -23,6 +23,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     EditText etUsername, etPassword;
     String pUsername, pPassword;
     ModelLogin modelLogin;
+    ModelToken modelToken;
     Intent intent = null;
 
     @Override
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         init();
         modelLogin = new ModelLogin();
+        modelToken = new ModelToken();
 
         btnLogin.setOnClickListener(this);
     }
@@ -54,11 +56,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         String loginStatus = ModelLogin.getByName(pUsername, pPassword,"status");
                         String loginToken = ModelLogin.getByName(pUsername, pPassword,"token");
 
-                        SharedPreferences sp = getSharedPreferences("myToken", Context.MODE_PRIVATE);
+                        SharedPreferences sp = getSharedPreferences("myStorage", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sp.edit();
-                        editor.putString("strToken", loginToken);
+                        editor.putString("token", loginToken);
                         editor.commit();
+
                         //Toast.makeText(this,"Login Token: " + sp.getString("strToken", "NoData"), Toast.LENGTH_SHORT).show();
+
                         if(loginStatus.equals("OK")){
                             intent = new Intent(getApplicationContext(), HomeActivity.class);
                             startActivity(intent);

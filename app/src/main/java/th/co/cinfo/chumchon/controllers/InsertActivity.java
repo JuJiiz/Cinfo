@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import th.co.cinfo.chumchon.R;
+import th.co.cinfo.chumchon.models.ModelToken;
 
 public class InsertActivity extends AppCompatActivity implements View.OnClickListener {
     ImageButton ibtHousehold, ibtCommucial, ibtLocalGovern, ibtCommunity, ibtForms44;
@@ -16,6 +17,7 @@ public class InsertActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert);
+        ModelToken.checkToken(this);
         init();
     }
 
