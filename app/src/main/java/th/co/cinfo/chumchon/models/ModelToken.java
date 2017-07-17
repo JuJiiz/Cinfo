@@ -1,8 +1,17 @@
 package th.co.cinfo.chumchon.models;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
+
+import th.co.cinfo.chumchon.controllers.LoginActivity;
 
 public class ModelToken {
 
@@ -29,7 +38,31 @@ public class ModelToken {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        //hitheir
         return result;
+    }
+
+    public static boolean checkToken(final Context context){
+        SharedPreferences sp = context.getSharedPreferences("My_Storage", Context.MODE_PRIVATE);
+        String token = sp.getString("token", "");
+        if(ModelToken.getByName(token,"status").equals("OK")){
+            return true;
+        }else{
+            AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+            alertDialog.setCancelable(false);
+            alertDialog.setTitle("หมดเวลาเชื่อมต่อ");
+            alertDialog.setMessage("หมดเวลาในการเชื่อมต่อ \nกรุณา\"เข้าสู่ระบบ\"ใหม่");
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            Intent intent = new Intent();
+                            intent.setClass(context,LoginActivity.class);
+                            context.startActivity(intent);
+                            ((Activity) context).finish();
+                        }
+                    });
+            alertDialog.show();
+            return false;
+        }
     }
 }
