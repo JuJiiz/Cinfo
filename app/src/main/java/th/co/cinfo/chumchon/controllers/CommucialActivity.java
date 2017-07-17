@@ -2,6 +2,7 @@ package th.co.cinfo.chumchon.controllers;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -25,6 +26,8 @@ public class CommucialActivity extends AppCompatActivity implements View.OnClick
     Button btnRefresh;
     String NO_COMMUCIAL = "number";
     String NAME_COMMUCIAL_OWNER = "name";
+    String STATUS_COUNT;
+    int statusCount = 0, allCount = 0;
     ArrayList<HashMap<String, String>> LIST;
 
     @Override
@@ -52,7 +55,7 @@ public class CommucialActivity extends AppCompatActivity implements View.OnClick
 
     private void getData(){
         String apiURL = "https://api.cinfo.co.th/v3/getGroupAsset_T2?";
-        ListView listView = (ListView) findViewById(R.id.listCommucial);
+        listCommucial = (ListView) findViewById(R.id.listCommucial);
         LIST = new ArrayList<HashMap<String, String>>();
         JSONObject jsonObject = null;
         try {
@@ -61,6 +64,26 @@ public class CommucialActivity extends AppCompatActivity implements View.OnClick
             for (int i=0 ; i < jsonArray.length(); i++){
                 JSONObject jsonObj = jsonArray.getJSONObject(i);
                 HashMap<String, String> temp = new HashMap<String, String>();
+
+                JSONObject tmpJsonObj = new JSONObject(jsonObj.getString("asset"));
+                if(tmpJsonObj.length() != 0){
+                    STATUS_COUNT = tmpJsonObj.getString("status");
+                    if(STATUS_COUNT.equals("wait")){
+                        statusCount+=0;
+                        allCount += 1;
+                    }else{
+                        statusCount+=1;
+                        allCount += 1;
+                    }
+                }else{
+                    /*statusCount = 1;
+                    allCount = 1;*/
+                }
+
+
+                Log.d("xxxxxxxxxxxxxxxxxx", "statusCount: " + statusCount);
+                Log.d("xxxxxxxxxxxxxxxxxx", "statusCount: " + allCount);
+
                 temp.put(NO_COMMUCIAL,jsonObj.getString("ID"));
                 temp.put(NAME_COMMUCIAL_OWNER,jsonObj.getString("owner"));
                 LIST.add(temp);
@@ -72,7 +95,7 @@ public class CommucialActivity extends AppCompatActivity implements View.OnClick
                 new String[]{NO_COMMUCIAL, NAME_COMMUCIAL_OWNER},
                 new int[]{R.id.tvNumber, R.id.tvOwnerName}
         );
-        listView.setAdapter(simpleAdapter);
+        listCommucial.setAdapter(simpleAdapter);
     }
 
 }

@@ -53,7 +53,7 @@ public class HouseholdActivity extends AppCompatActivity implements View.OnClick
 
     private void getData(){
         String apiURL = "https://api.cinfo.co.th/v2/getTaskList_F01_01?";
-        ListView listView = (ListView) findViewById(R.id.listHousehold);
+        listViewHousehold = (ListView) findViewById(R.id.listHousehold);
         LIST = new ArrayList<HashMap<String, String>>();
         JSONObject jsonObject = null;
         try {
@@ -76,7 +76,7 @@ public class HouseholdActivity extends AppCompatActivity implements View.OnClick
                 new String[]{NO_HOUSE_HOLD, NAME_HOUSE_HOLD, STATUS_HOUSE_HOLD},
                 new int[]{R.id.tvNoHousehold, R.id.tvNameHousehold, R.id.tvStatusHousehold}
         );
-        listView.setAdapter(simpleAdapter);
+        listViewHousehold.setAdapter(simpleAdapter);
     }
 
 }

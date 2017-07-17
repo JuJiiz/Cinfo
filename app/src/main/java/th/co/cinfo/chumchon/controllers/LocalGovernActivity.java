@@ -52,7 +52,7 @@ public class LocalGovernActivity extends AppCompatActivity implements View.OnCli
 
     private void getData(){
         String apiURL = "https://api.cinfo.co.th/v3/getGroupAsset_T3?";
-        ListView listView = (ListView) findViewById(R.id.listLocalGovern);
+        listLocalGovern = (ListView) findViewById(R.id.listLocalGovern);
         LIST = new ArrayList<HashMap<String, String>>();
         JSONObject jsonObject = null;
         try {
@@ -72,6 +72,6 @@ public class LocalGovernActivity extends AppCompatActivity implements View.OnCli
                 new String[]{NO_LOCALGOVERN, NAME_LOCALGOVERN_OWNER},
                 new int[]{R.id.tvNumber, R.id.tvOwnerName}
         );
-        listView.setAdapter(simpleAdapter);
+        listLocalGovern.setAdapter(simpleAdapter);
     }
 }
