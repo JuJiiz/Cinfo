@@ -2,16 +2,71 @@ package th.co.cinfo.chumchon.controllers;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import th.co.cinfo.chumchon.R;
+import th.co.cinfo.chumchon.models.ModelCommucial;
+import th.co.cinfo.chumchon.models.ModelHousehold;
 import th.co.cinfo.chumchon.models.ModelToken;
 
-public class CommucialActivity extends AppCompatActivity {
+public class CommucialActivity extends AppCompatActivity implements View.OnClickListener{
+    LinearLayout linearScroll;
+    ListView listCommucial;
+    Button btnRefresh;
+    String NO_COMMUCIAL = "number";
+    String NAME_COMMUCIAL_OWNER = "name";
+    ArrayList<HashMap<String, String>> LIST;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commucial);
         ModelToken.checkToken(this);
+        init();
     }
+
+    void init(){
+        linearScroll = (LinearLayout) findViewById(R.id.linearScroll);
+        listCommucial = (ListView) findViewById(R.id.listCommucial);
+        btnRefresh = (Button) findViewById(R.id.btnRefresh);
+
+        btnRefresh.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        ListView listView = (ListView) findViewById(R.id.listCommucial);
+        LIST = new ArrayList<HashMap<String, String>>();
+        JSONObject jsonObject = null;
+        try {
+            String strJsonObj = ModelCommucial.getByName(this,"task");
+            JSONArray jsonArray = new JSONArray(strJsonObj);
+            for (int i=0 ; i < jsonArray.length(); i++){
+                JSONObject jsonObj = jsonArray.getJSONObject(i);
+                HashMap<String, String> temp = new HashMap<String, String>();
+                temp.put(NO_COMMUCIAL,jsonObj.getString("ID"));
+                temp.put(NAME_COMMUCIAL_OWNER,jsonObj.getString("owner"));
+                LIST.add(temp);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        SimpleAdapter simpleAdapter = new SimpleAdapter(this, LIST, R.layout.view_commucial_item,
+                new String[]{NO_COMMUCIAL, NAME_COMMUCIAL_OWNER},
+                new int[]{R.id.tvNoCommucial, R.id.tvNameCommucialOwner}
+        );
+        listView.setAdapter(simpleAdapter);
+    }
+
 }

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import org.json.JSONArray;
@@ -22,6 +23,8 @@ public class HouseholdActivity extends AppCompatActivity implements View.OnClick
     String STATUS_HOUSE_HOLD = "status";
     ArrayList<HashMap<String, String>> LIST;
     ListView listViewHousehold;
+    int rowSize = 5;
+    LinearLayout linearScroll;
     Button btnRefresh;
 
     @Override
@@ -33,9 +36,11 @@ public class HouseholdActivity extends AppCompatActivity implements View.OnClick
     }
 
     void init(){
+        linearScroll = (LinearLayout) findViewById(R.id.linearScroll);
         listViewHousehold = (ListView) findViewById(R.id.listHousehold);
         btnRefresh = (Button) findViewById(R.id.btnRefresh);
         btnRefresh.setOnClickListener(this);
+
     }
 
 
