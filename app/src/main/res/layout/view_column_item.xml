@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="left"
-        android:text="TextView" />
+        android:text="ID" />
 
     <TextView
         android:id="@+id/tvOwnerName"
@@ -21,12 +21,15 @@
         android:layout_height="wrap_content"
         android:layout_weight="2"
         android:gravity="left"
-        android:text="TextView" />
-    <ProgressBar
-        android:id="@+id/pbColumn"
-        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+        android:text="Name" />
+
+    <TextView
+        android:id="@+id/tvProgress"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Progress" />
+
 
 </LinearLayout>

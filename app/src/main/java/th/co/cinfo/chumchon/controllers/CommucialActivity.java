@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
 
 import org.json.JSONArray;
@@ -20,14 +21,14 @@ import th.co.cinfo.chumchon.R;
 import th.co.cinfo.chumchon.models.ModelGetData;
 import th.co.cinfo.chumchon.models.ModelToken;
 
-public class CommucialActivity extends AppCompatActivity implements View.OnClickListener{
+public class CommucialActivity extends AppCompatActivity implements View.OnClickListener {
     LinearLayout linearScroll;
     ListView listCommucial;
     Button btnRefresh;
     String NO_COMMUCIAL = "number";
     String NAME_COMMUCIAL_OWNER = "name";
-    String STATUS_COUNT;
-    int statusCount = 0, allCount = 0;
+    String STATUS_COLUMN = "status";
+    String status_count = "count";
     ArrayList<HashMap<String, String>> LIST;
 
     @Override
@@ -39,7 +40,7 @@ public class CommucialActivity extends AppCompatActivity implements View.OnClick
         getData();
     }
 
-    private void init(){
+    private void init() {
         linearScroll = (LinearLayout) findViewById(R.id.linearScroll);
         btnRefresh = (Button) findViewById(R.id.btnRefresh);
 
@@ -48,54 +49,48 @@ public class CommucialActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        if(v == btnRefresh){
+        if (v == btnRefresh) {
             getData();
         }
     }
 
-    private void getData(){
+    private void getData() {
         String apiURL = "https://api.cinfo.co.th/v3/getGroupAsset_T2?";
         listCommucial = (ListView) findViewById(R.id.listCommucial);
         LIST = new ArrayList<HashMap<String, String>>();
         JSONObject jsonObject = null;
         try {
-            String strJsonObj = ModelGetData.getByName(this,apiURL,"task");
+            String strJsonObj = ModelGetData.getByName(this, apiURL, "task");
             JSONArray jsonArray = new JSONArray(strJsonObj);
-            for (int i=0 ; i < jsonArray.length(); i++){
+            for (int i = 0; i < jsonArray.length(); i++) {
+                int statusCount = 0, progress = 0;
                 JSONObject jsonObj = jsonArray.getJSONObject(i);
                 HashMap<String, String> temp = new HashMap<String, String>();
-
-                JSONObject tmpJsonObj = new JSONObject(jsonObj.getString("asset"));
-                if(tmpJsonObj.length() != 0){
-                    STATUS_COUNT = tmpJsonObj.getString("status");
-                    if(STATUS_COUNT.equals("wait")){
-                        statusCount+=0;
-                        allCount += 1;
-                    }else{
-                        statusCount+=1;
-                        allCount += 1;
-                    }
-                }else{
-                    /*statusCount = 1;
-                    allCount = 1;*/
-                }
-
-
-                Log.d("xxxxxxxxxxxxxxxxxx", "statusCount: " + statusCount);
-                Log.d("xxxxxxxxxxxxxxxxxx", "statusCount: " + allCount);
-
-                temp.put(NO_COMMUCIAL,jsonObj.getString("ID"));
-                temp.put(NAME_COMMUCIAL_OWNER,jsonObj.getString("owner"));
+                temp.put(NO_COMMUCIAL, jsonObj.getString("ID"));
+                temp.put(NAME_COMMUCIAL_OWNER, jsonObj.getString("owner"));
                 LIST.add(temp);
+                temp.put(STATUS_COLUMN, jsonObj.getString("status"));
+
+                JSONArray tmpJsonArray = new JSONArray(jsonObj.getString("asset"));
+                if (tmpJsonArray.length() != 0) {
+                    for (int j = 0; j < tmpJsonArray.length(); j++) {
+                        JSONObject jsonObjcheck = tmpJsonArray.getJSONObject(j);
+                        status_count = jsonObjcheck.getString("status");
+                        if (!status_count.equals("wait")) {
+                            statusCount += 1;
+                        }
+                    }
+                    progress = (statusCount * 100) / tmpJsonArray.length();
+                }
+                temp.put(STATUS_COLUMN, progress + "%");
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
         SimpleAdapter simpleAdapter = new SimpleAdapter(this, LIST, R.layout.view_column_item,
-                new String[]{NO_COMMUCIAL, NAME_COMMUCIAL_OWNER},
-                new int[]{R.id.tvNumber, R.id.tvOwnerName}
+                new String[]{NO_COMMUCIAL, NAME_COMMUCIAL_OWNER, STATUS_COLUMN},
+                new int[]{R.id.tvNumber, R.id.tvOwnerName, R.id.tvProgress}
         );
         listCommucial.setAdapter(simpleAdapter);
     }
-
 }

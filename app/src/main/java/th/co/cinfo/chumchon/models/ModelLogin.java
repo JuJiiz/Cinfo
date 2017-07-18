@@ -1,5 +1,7 @@
 package th.co.cinfo.chumchon.models;
 
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.concurrent.ExecutionException;
@@ -21,7 +23,6 @@ public class ModelLogin {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        int a = 5;
         return resultValue;
     }
 
