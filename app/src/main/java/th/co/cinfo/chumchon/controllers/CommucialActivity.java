@@ -19,17 +19,15 @@ import java.util.HashMap;
 
 import th.co.cinfo.chumchon.R;
 import th.co.cinfo.chumchon.models.ModelGetData;
+import th.co.cinfo.chumchon.models.ModelGetJson;
+import th.co.cinfo.chumchon.models.ModelSetAdapterColumn;
 import th.co.cinfo.chumchon.models.ModelToken;
 
 public class CommucialActivity extends AppCompatActivity implements View.OnClickListener {
-    LinearLayout linearScroll;
     ListView listCommucial;
     Button btnRefresh;
-    String NO_COMMUCIAL = "number";
-    String NAME_COMMUCIAL_OWNER = "name";
-    String STATUS_COLUMN = "status";
-    String status_count = "count";
-    ArrayList<HashMap<String, String>> LIST;
+    String apiURL = "https://api.cinfo.co.th/v3/getGroupAsset_T2?";
+    String whatUWant = "task";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +35,12 @@ public class CommucialActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_commucial);
         ModelToken.checkToken(this);
         init();
-        getData();
+        ModelGetJson.getHeadJson(this, apiURL, whatUWant, listCommucial);
     }
 
     private void init() {
-        linearScroll = (LinearLayout) findViewById(R.id.linearScroll);
         btnRefresh = (Button) findViewById(R.id.btnRefresh);
+        listCommucial = (ListView) findViewById(R.id.listCommucial);
 
         btnRefresh.setOnClickListener(this);
     }
@@ -50,47 +48,7 @@ public class CommucialActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         if (v == btnRefresh) {
-            getData();
+            ModelGetJson.getHeadJson(this, apiURL, whatUWant, listCommucial);
         }
-    }
-
-    private void getData() {
-        String apiURL = "https://api.cinfo.co.th/v3/getGroupAsset_T2?";
-        listCommucial = (ListView) findViewById(R.id.listCommucial);
-        LIST = new ArrayList<HashMap<String, String>>();
-        JSONObject jsonObject = null;
-        try {
-            String strJsonObj = ModelGetData.getByName(this, apiURL, "task");
-            JSONArray jsonArray = new JSONArray(strJsonObj);
-            for (int i = 0; i < jsonArray.length(); i++) {
-                int statusCount = 0, progress = 0;
-                JSONObject jsonObj = jsonArray.getJSONObject(i);
-                HashMap<String, String> temp = new HashMap<String, String>();
-                temp.put(NO_COMMUCIAL, jsonObj.getString("ID"));
-                temp.put(NAME_COMMUCIAL_OWNER, jsonObj.getString("owner"));
-                LIST.add(temp);
-                temp.put(STATUS_COLUMN, jsonObj.getString("status"));
-
-                JSONArray tmpJsonArray = new JSONArray(jsonObj.getString("asset"));
-                if (tmpJsonArray.length() != 0) {
-                    for (int j = 0; j < tmpJsonArray.length(); j++) {
-                        JSONObject jsonObjcheck = tmpJsonArray.getJSONObject(j);
-                        status_count = jsonObjcheck.getString("status");
-                        if (!status_count.equals("wait")) {
-                            statusCount += 1;
-                        }
-                    }
-                    progress = (statusCount * 100) / tmpJsonArray.length();
-                }
-                temp.put(STATUS_COLUMN, progress + "%");
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        SimpleAdapter simpleAdapter = new SimpleAdapter(this, LIST, R.layout.view_column_item,
-                new String[]{NO_COMMUCIAL, NAME_COMMUCIAL_OWNER, STATUS_COLUMN},
-                new int[]{R.id.tvNumber, R.id.tvOwnerName, R.id.tvProgress}
-        );
-        listCommucial.setAdapter(simpleAdapter);
     }
 }

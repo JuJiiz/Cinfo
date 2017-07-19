@@ -18,22 +18,15 @@ public class ModelGetData {
         String result = "";
         SharedPreferences sp = context.getSharedPreferences("myStorage", Context.MODE_PRIVATE);
         String token = sp.getString("token","");
-
         Log.d("XXXXXXXXXXXX", "token: "+token);
-
         String districtCode = ModelToken.getByName(token,"cus_data.DISTRICT_CODE");
-
         Log.d("XXXXXXXXXXXX", "districtCode: "+districtCode);
-
         try {
             String url = apiURL + "DISTRICT_CODE=" + districtCode + "&token=" + token;
             String strGetJson = new CallApi().execute(url).get();
-
             Log.d("XXXXXXXXXXXX", "strGetJson: "+strGetJson);
-
             JSONObject jsonObject = new JSONObject(strGetJson);
             result = jsonObject.getString(pname);
-
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
