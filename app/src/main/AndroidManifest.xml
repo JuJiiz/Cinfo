@@ -15,6 +15,7 @@
         <activity android:name=".controllers.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -30,8 +31,9 @@
         <activity android:name=".controllers.F001Activity" />
         <activity android:name=".controllers.F002Activity" />
         <activity android:name=".controllers.F003Activity" />
-        <activity android:name=".controllers.F004Activity"/>
-        <activity android:name=".controllers.MainActivity"/>
+        <activity android:name=".controllers.F004Activity" />
+        <activity android:name=".controllers.MainActivity" />
+        <activity android:name=".controllers.TaskgroupF0101Activity"></activity>
     </application>
 
 </manifest>

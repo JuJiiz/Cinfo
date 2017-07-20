@@ -4,8 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:paddingLeft="20dp"
-    android:paddingRight="20dp"
-    android:weightSum="4">
+    android:weightSum="5">
 
     <TextView
         android:id="@+id/tvNumberHead"
@@ -19,7 +18,7 @@
         android:id="@+id/tvOwnerNameHead"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="2"
+        android:layout_weight="2.5"
         android:gravity="left"
         android:text="Name" />
 
@@ -31,5 +30,13 @@
         android:gravity="center"
         android:text="Progress" />
 
+    <TextView
+        android:id="@+id/tvTaskID"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:gravity="left"
+        android:visibility="invisible"
+        android:text="TaskID" />
 
 </LinearLayout>
