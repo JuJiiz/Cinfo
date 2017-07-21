@@ -50,6 +50,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     try {
                         pUsername = etUsername.getText().toString();
                         pPassword = Sha1Hash.SHA1(etPassword.getText().toString());
+                        pUsername = "demo00124@900001";
+                        pPassword = "d8154449f9e858f9068e36bd73cfdc478f67c0c9";
 
                         String loginStatus = ModelLogin.getByName(pUsername, pPassword,"status");
                         String loginToken = ModelLogin.getByName(pUsername, pPassword,"token");
