@@ -17,6 +17,7 @@ import android.view.MenuItem;
 
 import th.co.cinfo.chumchon.R;
 import th.co.cinfo.chumchon.controllers.HouseholdActivity;
+import th.co.cinfo.chumchon.models.ModelToken;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ModelToken.checkToken(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

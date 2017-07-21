@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import th.co.cinfo.chumchon.R;
+import th.co.cinfo.chumchon.models.ModelToken;
 
 public class Forms44Activity extends AppCompatActivity implements View.OnClickListener {
     ImageButton ibtF001, ibtF002, ibtF003, ibtF004;
@@ -16,6 +17,7 @@ public class Forms44Activity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forms44);
+        ModelToken.checkToken(this);
         init();
     }
 

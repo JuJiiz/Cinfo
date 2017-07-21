@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="th.co.cinfo.chumchon.controllers.CommunityActivity">
+    tools:context="th.co.cinfo.chumchon.controllers.TaskgroupF0101Activity">
 
     <Button
         android:id="@+id/btnRefresh"
@@ -14,26 +14,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <ListView
-        android:id="@+id/listCommunity"
+        android:id="@+id/lvData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </ListView>
-
-    <HorizontalScrollView
-        android:id="@+id/scroll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom">
-
-        <LinearLayout
-            android:id="@+id/linearScroll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="20dp">
-
-        </LinearLayout>
-
-    </HorizontalScrollView>
 
 </LinearLayout>

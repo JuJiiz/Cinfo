@@ -42,7 +42,7 @@ public class ModelToken {
     }
 
     public static boolean checkToken(final Context context){
-        SharedPreferences sp = context.getSharedPreferences("My_Storage", Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences("myStorage", Context.MODE_PRIVATE);
         String token = sp.getString("token", "");
         if(ModelToken.getByName(token,"status").equals("OK")){
             return true;
