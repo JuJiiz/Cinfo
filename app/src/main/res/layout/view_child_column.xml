@@ -2,29 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingLeft="20dp"
+    android:weightSum="5">
 
     <TextView
-        android:id="@+id/tvNumberChild"
+        android:id="@+id/tvTaskColumn"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_height="@dimen/Dialog_Row_Height"
+        android:layout_weight="3"
         android:gravity="left"
-        android:text="TextView" />
+        android:text="ID" />
 
     <TextView
-        android:id="@+id/tvOwnerNameChild"
+        android:id="@+id/tvStatusColumn"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="left"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/tvStatusChild"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_height="@dimen/Dialog_Row_Height"
+        android:layout_weight="1.5"
         android:gravity="center"
-        android:text="TextView" />
+        android:text="Progress" />
+
+    <TextView
+        android:id="@+id/tvTaskID"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/Dialog_Row_Height"
+        android:layout_weight="0.5"
+        android:gravity="left"
+        android:visibility="invisible"
+        android:text="TaskID" />
+
 </LinearLayout>

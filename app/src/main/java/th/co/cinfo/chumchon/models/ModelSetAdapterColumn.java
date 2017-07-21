@@ -13,6 +13,15 @@ import th.co.cinfo.chumchon.R;
  */
 
 public class ModelSetAdapterColumn {
+
+    public static void setHouseholdAdapter(Context context, ArrayList LIST, String COLUMN_NUMBER, String OWNER_NAME_COLUMN, String STATUS_COLUMN, String TASKID_COLUMN, ListView listView) {
+        SimpleAdapter simpleAdapter = new SimpleAdapter(context, LIST, R.layout.view_household_column,
+                new String[]{COLUMN_NUMBER, OWNER_NAME_COLUMN, STATUS_COLUMN, TASKID_COLUMN},
+                new int[]{R.id.tvNumberChild, R.id.tvOwnerNameChild, R.id.tvStatusChild, R.id.tvTaskID}
+        );
+        listView.setAdapter(simpleAdapter);
+    }
+
     public static void setHeadAdapter(Context context, ArrayList LIST, String COLUMN_NUMBER, String OWNER_NAME_COLUMN, String STATUS_COLUMN, ListView listView) {
         SimpleAdapter simpleAdapter = new SimpleAdapter(context, LIST, R.layout.view_head_column,
                 new String[]{COLUMN_NUMBER, OWNER_NAME_COLUMN, STATUS_COLUMN},
@@ -21,10 +30,10 @@ public class ModelSetAdapterColumn {
         listView.setAdapter(simpleAdapter);
     }
 
-    public static void setChildAdapter(Context context, ArrayList LIST, String COLUMN_NUMBER, String OWNER_NAME_COLUMN, String STATUS_COLUMN, String TASKID_COLUMN, ListView listView) {
+    public static void setChildAdapter(Context context, ArrayList LIST, String TASK, String STATUS, String taskID, ListView listView) {
         SimpleAdapter simpleAdapter = new SimpleAdapter(context, LIST, R.layout.view_child_column,
-                new String[]{COLUMN_NUMBER, OWNER_NAME_COLUMN, STATUS_COLUMN, TASKID_COLUMN},
-                new int[]{R.id.tvNumberChild, R.id.tvOwnerNameChild, R.id.tvStatusChild, R.id.tvTaskID}
+                new String[]{TASK, STATUS, taskID},
+                new int[]{R.id.tvTaskColumn, R.id.tvStatusColumn, R.id.tvTaskID}
         );
         listView.setAdapter(simpleAdapter);
     }

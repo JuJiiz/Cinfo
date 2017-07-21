@@ -14,7 +14,7 @@ import java.util.concurrent.ExecutionException;
  */
 
 public class ModelGetData {
-    public static String getByName(Context context, String apiURL, String pname) {
+    public static String getJsonArray(Context context, String apiURL, String pname) {
         String result = "";
         SharedPreferences sp = context.getSharedPreferences("myStorage", Context.MODE_PRIVATE);
         String token = sp.getString("token", "");
@@ -37,7 +37,7 @@ public class ModelGetData {
         return result;
     }
 
-    public static String getGroupAsset(Context context, String apiURL, String pkey, String taskID) {
+    public static String getHouseholdJsonArray(Context context, String apiURL, String pkey, String taskID) {
         String result = "";
         SharedPreferences sp = context.getSharedPreferences("myStorage", Context.MODE_PRIVATE);
         String token = sp.getString("token", "");
