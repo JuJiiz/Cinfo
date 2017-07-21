@@ -89,18 +89,26 @@ public class ModelGetJson {
         ModelSetAdapterColumn.setChildAdapter(context, LIST, TASK, STATUS, ID, listView);
     }
 
-    public static void getHouseholdHeadJson(Context context, String apiURL, String pKey, ListView listView) {
+    public static int getHouseholdHeadJson(Context context, String apiURL, String pKey, int pPage, ListView listView) {
         String CHILD_COLUMN_NUMBER = "number";
         String CHILD_OWNER_NAME_COLUMN = "name";
         String CHILD_STATUS_COLUMN = "status";
         String CHILD_TASKID_COLUMN = "taskid";
         ArrayList<HashMap<String, String>> LIST;
         LIST = new ArrayList<HashMap<String, String>>();
-        JSONObject jsonObject = null;
+        int pageIndex = 0;
+        int maxItem = 10;
         try {
             String strJsonObj = ModelGetData.getJsonArray(context, apiURL, pKey);
             JSONArray jsonArray = new JSONArray(strJsonObj);
-            for (int i = 0; i < jsonArray.length(); i++) {
+            if(pPage < 1){
+                pageIndex = 0;
+            }else if(pPage > Math.ceil(jsonArray.length()/(1.0*maxItem))){
+                pageIndex = (int)Math.ceil(jsonArray.length()/(1.0*maxItem))-1;
+            }else{
+                pageIndex = pPage-1;
+            }
+            for (int i = pageIndex*maxItem; i < jsonArray.length() && i < pageIndex*maxItem+maxItem; i++) {
                 JSONObject jsonObj = jsonArray.getJSONObject(i);
                 HashMap<String, String> temp = new HashMap<String, String>();
                 temp.put(CHILD_COLUMN_NUMBER, jsonObj.getString("H_NO"));
@@ -119,6 +127,7 @@ public class ModelGetJson {
             e.printStackTrace();
         }
         ModelSetAdapterColumn.setHouseholdAdapter(context, LIST, CHILD_COLUMN_NUMBER, CHILD_OWNER_NAME_COLUMN, CHILD_STATUS_COLUMN, CHILD_TASKID_COLUMN, listView);
+        return pageIndex+1;
     }
 
     public static void getHouseholdChildJson(Context context, String apiURL, String pKey, String taskID, ListView listView) {
