@@ -6,17 +6,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.Toast;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import th.co.cinfo.chumchon.R;
 import th.co.cinfo.chumchon.models.*;
@@ -49,17 +39,17 @@ public class HouseholdActivity extends AppCompatActivity implements View.OnClick
             }
         });
         btnRefresh.setOnClickListener(this);
-        refreshPage();
-        //ModelGetJson.getChildJson(this, apiURL, whatUWant, listViewHousehold);
+        //refreshPage();
+        ModelGetJson.getChildJson(this, apiURL, whatUWant, listViewHousehold);
     }
 
     void refreshPage(){
-        STRING_JSONDATA = ModelGetData.getByName(this, apiURL, whatUWant);
-        PAGE_NUMBER = ModelGetJson.getChildJsonByPage(this,STRING_JSONDATA,listViewHousehold,1);
+        //STRING_JSONDATA = ModelGetData.getByName(this, apiURL, whatUWant);
+        //PAGE_NUMBER = ModelGetJson.getChildJsonByPage(this,STRING_JSONDATA,listViewHousehold,1);
     }
 
     void changePage(int pPage){
-        PAGE_NUMBER = ModelGetJson.getChildJsonByPage(this,STRING_JSONDATA,listViewHousehold,pPage);
+        //PAGE_NUMBER = ModelGetJson.getChildJsonByPage(this,STRING_JSONDATA,listViewHousehold,pPage);
     }
 
     @Override
