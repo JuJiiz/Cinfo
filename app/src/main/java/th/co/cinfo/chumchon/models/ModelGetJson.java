@@ -132,24 +132,31 @@ public class ModelGetJson {
         return pageIndex + 1;
     }
 
-    public static void getHouseholdChildJson(Context context, String apiURL, String pKey, String taskID, ListView listView) {
+    public static int getHouseholdChildJson(Context context, String strJsonObj, int pPage, ListView listView) {
         String HEAD_COLUMN_IDNUMBER = "idnumber";
         String HEAD_OWNER_NAME_COLUMN = "name";
         String HEAD_STATUS_COLUMN = "status";
         String status_count = "count";
         ArrayList<HashMap<String, String>> LIST;
         LIST = new ArrayList<HashMap<String, String>>();
-        JSONObject jsonObject = null;
+        int pageIndex = 0;
+        int maxItem = 10;
         try {
-            String strJsonObj = ModelGetData.getHouseholdJsonArray(context, apiURL, pKey, taskID);
+            //String strJsonObj = ModelGetData.getHouseholdJsonArray(context, apiURL, pKey, taskID);
             JSONArray jsonArray = new JSONArray(strJsonObj);
-            for (int i = 0; i < jsonArray.length(); i++) {
+            if (pPage < 1) {
+                pageIndex = 0;
+            } else if (pPage > Math.ceil(jsonArray.length() / (1.0 * maxItem))) {
+                pageIndex = (int) Math.ceil(jsonArray.length() / (1.0 * maxItem)) - 1;
+            } else {
+                pageIndex = pPage - 1;
+            }
+            for (int i = pageIndex * maxItem; i < jsonArray.length() && i < pageIndex * maxItem + maxItem; i++) {
                 int statusCount = 0, progress = 0;
                 JSONObject jsonObj = jsonArray.getJSONObject(i);
                 HashMap<String, String> temp = new HashMap<String, String>();
                 temp.put(HEAD_COLUMN_IDNUMBER, jsonObj.getString("ID"));
                 temp.put(HEAD_OWNER_NAME_COLUMN, jsonObj.getString("Owner"));
-                LIST.add(temp);
                 temp.put(HEAD_STATUS_COLUMN, jsonObj.getString("status"));
 
                 JSONArray tmpJsonArray = new JSONArray(jsonObj.getString("asset"));
@@ -164,11 +171,13 @@ public class ModelGetJson {
                     progress = (statusCount * 100) / tmpJsonArray.length();
                 }
                 temp.put(HEAD_STATUS_COLUMN, progress + "%");
+                LIST.add(temp);
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
         ModelSetAdapterColumn.setHeadAdapter(context, LIST, HEAD_COLUMN_IDNUMBER, HEAD_OWNER_NAME_COLUMN, HEAD_STATUS_COLUMN, listView);
+        return pageIndex;
     }
 
     public static void getHouseholdChildDialogJson(Context context, String apiURL, String pKey, String taskID, int Position, ListView listView) {

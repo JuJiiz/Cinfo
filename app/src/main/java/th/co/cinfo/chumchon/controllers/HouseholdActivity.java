@@ -26,6 +26,8 @@ public class HouseholdActivity extends AppCompatActivity implements View.OnClick
     String apiURL = "https://api.cinfo.co.th/v2/getTaskList_F01_01?";
     String whatUWant = "Houses";
     String STRING_JSONDATA;
+    String strSearch;
+    Boolean SearchStatus = false;
     Intent intent;
     GestureDetector gestureScanner;
 
@@ -75,8 +77,9 @@ public class HouseholdActivity extends AppCompatActivity implements View.OnClick
             changePage(PAGE_NUMBER + 1);
         }
         if (v == btnSearch) {
-            String strSearch = etSearch.getText().toString();
+            strSearch = etSearch.getText().toString();
             PAGE_NUMBER = ModelGetJson.getSearch(this, STRING_JSONDATA, strSearch, 1, listViewHousehold);
+            SearchStatus = true;
         }
     }
 
@@ -96,10 +99,15 @@ public class HouseholdActivity extends AppCompatActivity implements View.OnClick
     void refreshPage() {
         STRING_JSONDATA = ModelGetData.getJsonArray(this, apiURL, whatUWant);
         PAGE_NUMBER = ModelGetJson.getHouseholdHeadJson(this, STRING_JSONDATA, 1, listViewHousehold);
+        SearchStatus = false;
     }
 
     void changePage(int pPage) {
-        PAGE_NUMBER = ModelGetJson.getHouseholdHeadJson(this, STRING_JSONDATA, pPage, listViewHousehold);
+        if(SearchStatus = false){
+            PAGE_NUMBER = ModelGetJson.getHouseholdHeadJson(this, STRING_JSONDATA, pPage, listViewHousehold);
+        }else {
+            PAGE_NUMBER = ModelGetJson.getSearch(this, STRING_JSONDATA, strSearch, pPage, listViewHousehold);
+        }
     }
 
     @Override

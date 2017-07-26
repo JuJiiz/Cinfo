@@ -6,15 +6,24 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:text="ข้อมูลตลาด"
-        android:textAlignment="center"
-        android:textColor="#000"
-        android:textSize="30dp" />
-
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"
+            android:text="ข้อมูลตลาด"
+            android:textColor="#000"
+            android:textSize="30dp" />
+        <Button
+            android:id="@+id/btnSavingData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="บันทึก"/>
+    </RelativeLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -167,7 +176,7 @@
                     android:inputType="text" />
 
                 <EditText
-                    android:id="@+id/spRegisterDate"
+                    android:id="@+id/etRegisterDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="จดทะเบียนเมื่อวันที่"
@@ -177,22 +186,35 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-
                     <TextView
                         android:id="@+id/tvMarketGenre"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ประเภทตลาด*"
                         android:textColor="#000" />
-
                     <Spinner
-                        android:id="@+id/etMarketGenre"
+                        android:id="@+id/spMarketGenre"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"></Spinner>
-
                 </LinearLayout>
 
-                <!--แผนที่ เลือกตำแหน่งได้-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ตำแหน่งที่ตั้ง"
+                    android:textColor="#000" />
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/mapMapMap"
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="#e5e5e5">
+                </com.google.android.gms.maps.MapView>
+                <Button
+                    android:id="@+id/btnGetPosition"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="พิกัดปัจจุบัน"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -207,7 +229,7 @@
                         android:textColor="#000" />
 
                     <Spinner
-                        android:id="@+id/etVillagesName"
+                        android:id="@+id/spVillagesName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"></Spinner>
 
@@ -392,6 +414,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/loElectric"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -480,6 +503,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/loPropertyRenting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -516,6 +540,7 @@
                 android:padding="20dp">
 
                 <ImageView
+                    android:id="@+id/ivImageUpload"
                     android:layout_width="200dp"
                     android:layout_height="100dp"
                     android:background="#e1e1e1" />
