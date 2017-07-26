@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,6 +53,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     try {
                         pUsername = etUsername.getText().toString();
                         pPassword = Sha1Hash.SHA1(etPassword.getText().toString());
+                        pUsername = "demo00124@900001";
+                        pPassword = "d8154449f9e858f9068e36bd73cfdc478f67c0c9";
 
                         String loginStatus = ModelLogin.getByName(pUsername, pPassword,"status");
                         String loginToken = ModelLogin.getByName(pUsername, pPassword,"token");

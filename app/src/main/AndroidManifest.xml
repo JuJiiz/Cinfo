@@ -33,7 +33,8 @@
         <activity android:name=".controllers.F003Activity" />
         <activity android:name=".controllers.F004Activity" />
         <activity android:name=".controllers.MainActivity" />
-        <activity android:name=".controllers.TaskgroupF0101Activity"></activity>
+        <activity android:name=".controllers.TaskgroupF0101Activity" />
+        <activity android:name=".controllers.F01_12Activity"></activity>
     </application>
 
 </manifest>

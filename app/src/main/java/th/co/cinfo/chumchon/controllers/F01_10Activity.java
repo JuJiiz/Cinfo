@@ -14,6 +14,7 @@ import android.widget.Spinner;
 
 import th.co.cinfo.chumchon.R;
 import th.co.cinfo.chumchon.models.ModelGetJson;
+import th.co.cinfo.chumchon.models.ModelSendApi;
 import th.co.cinfo.chumchon.models.ModelToken;
 
 /**
@@ -187,5 +188,76 @@ public class F01_10Activity extends AppCompatActivity implements View.OnClickLis
         if (rbCorporate.isChecked()) loCorporateName.setVisibility(View.VISIBLE);
         if (rbLocalGovernment.isChecked()) loGovernmentName.setVisibility(View.VISIBLE);
         if (rbOtherDepartment.isChecked()) loDepartName.setVisibility(View.VISIBLE);
+    }
+
+    public void submit(){
+        ModelSendApi modelSendApi = new ModelSendApi(this,"F01_10");
+        modelSendApi.add(etFirstName.getTag().toString(),etFirstName.getText().toString());
+        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
+        modelSendApi.add(etPersonId.getTag().toString(),etPersonId.getText().toString());
+        modelSendApi.add(corporateName.getTag().toString(),corporateName.getText().toString());
+        modelSendApi.add(localGovernmentName.getTag().toString(),localGovernmentName.getText().toString());
+        modelSendApi.add(otherDepartmentName.getTag().toString(),otherDepartmentName.getText().toString());
+        modelSendApi.add(etMarketName.getTag().toString(),etMarketName.getText().toString());
+        modelSendApi.add(etRegisterDate.getTag().toString(),etRegisterDate.getText().toString());
+        modelSendApi.add(etBuildingAccessDate.getTag().toString(),etBuildingAccessDate.getText().toString());
+        modelSendApi.add(etRegisteredCapital.getTag().toString(),etRegisteredCapital.getText().toString());
+        modelSendApi.add(etNumbersOfEmployment.getTag().toString(),etNumbersOfEmployment.getText().toString());
+        modelSendApi.add(etLumen.getTag().toString(),etLumen.getText().toString());
+        modelSendApi.add(etLampDist.getTag().toString(),etLampDist.getText().toString());
+        modelSendApi.add(etPropertyRentingYes.getTag().toString(),etPropertyRentingYes.getText().toString());
+        modelSendApi.add(etInformantFirstName.getTag().toString(),etInformantFirstName.getText().toString());
+        modelSendApi.add(etInformantLastName.getTag().toString(),etInformantLastName.getText().toString());
+        modelSendApi.add(etInformantPosition.getTag().toString(),etInformantPosition.getText().toString());
+        modelSendApi.add(etInformantTelephone.getTag().toString(),etInformantTelephone.getText().toString());
+        modelSendApi.add(etInformationDate.getTag().toString(),etInformationDate.getText().toString());
+
+        rbPeople = (RadioButton) findViewById(R.id.rbPeople);
+        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
+        rbCorporate = (RadioButton) findViewById(R.id.rbCorporate);
+        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
+        rbLocalGovernment = (RadioButton) findViewById(R.id.rbLocalGovernment);
+        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
+        rbOtherDepartment = (RadioButton) findViewById(R.id.rbOtherDepartment);
+        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
+        MarketComplaintsYes = (RadioButton) findViewById(R.id.MarketComplaintsYes);
+        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
+        MarketComplaintsNo = (RadioButton) findViewById(R.id.MarketComplaintsNo);
+        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
+        MarketAssessmentPass = (RadioButton) findViewById(R.id.MarketAssessmentPass);
+        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
+        MarketAssessmentFail = (RadioButton) findViewById(R.id.MarketAssessmentFail);
+        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
+        MarketDegreeGood = (RadioButton) findViewById(R.id.MarketDegreeGood);
+        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
+        MarketDegreeBest = (RadioButton) findViewById(R.id.MarketDegreeBest);
+        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
+        MarketRentingYes = (RadioButton) findViewById(R.id.MarketRentingYes);
+        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
+        MarketRentingNo = (RadioButton) findViewById(R.id.MarketRentingNo);
+        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
+        PropertyRentingYes = (RadioButton) findViewById(R.id.PropertyRentingYes);
+        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
+        PropertyRentingNo = (RadioButton) findViewById(R.id.PropertyRentingNo);
+        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
+
+        rbPeople.setOnCheckedChangeListener(this);
+        rbCorporate.setOnCheckedChangeListener(this);
+        rbLocalGovernment.setOnCheckedChangeListener(this);
+        rbOtherDepartment.setOnCheckedChangeListener(this);
+
+
+        loPeopleName = (LinearLayout) findViewById(R.id.loPeopleName);
+        loCorporateName = (LinearLayout) findViewById(R.id.loCorporateName);
+        loGovernmentName = (LinearLayout) findViewById(R.id.loGovernmentName);
+        loDepartName = (LinearLayout) findViewById(R.id.loDepartName);
+        loElectric = (LinearLayout) findViewById(R.id.loElectric);
+        loPropertyRenting = (LinearLayout) findViewById(R.id.loPropertyRenting);
+
+        spMarketGenre = (Spinner) findViewById(R.id.spMarketGenre);
+        spVillagesName = (Spinner) findViewById(R.id.spVillagesName);
+        spRentStatus = (Spinner) findViewById(R.id.spRentStatus);
+
+        ivImageUpload = (ImageView) findViewById(R.id.ivImageUpload);
     }
 }
