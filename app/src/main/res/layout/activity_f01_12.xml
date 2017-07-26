@@ -263,17 +263,20 @@
                     android:textColor="#000"
                     android:textSize="10dp"/>
                 <RadioGroup
+                    android:tag="F01-12-L"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rdgMarketRenting">
                     <RadioButton
+                        android:tag="1"
                         android:id="@+id/MarketRentingYes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="มี (ระบุสถานะ)"/>
                     <!--ทำให้กดแล้วจะแตกออกมาเป็นฟอร์มให้กรอกอีกนิดหน่อย-->
                     <RadioButton
+                        android:tag="0"
                         android:id="@+id/MarketRentingNo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -346,24 +349,28 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp">
                 <EditText
+                    android:tag="F01-12-S2-01"
                     android:id="@+id/etInformantFirstName"
                     android:layout_width="343dp"
                     android:layout_height="match_parent"
                     android:hint="ชื่อ"
                     android:inputType="text"/>
                 <EditText
+                    android:tag="F01-12-S2-02"
                     android:id="@+id/etInformantLastName"
                     android:layout_width="343dp"
                     android:layout_height="match_parent"
                     android:hint="นามสกุล"
                     android:inputType="text"/>
                 <EditText
+                    android:tag="F01-12-S2-03"
                     android:id="@+id/etInformantPosition"
                     android:layout_width="343dp"
                     android:layout_height="match_parent"
                     android:hint="ตำแหน่ง"
                     android:inputType="text"/>
                 <EditText
+                    android:tag="F01-12-S2-04"
                     android:id="@+id/etInformantTelephone"
                     android:layout_width="343dp"
                     android:layout_height="match_parent"
@@ -377,6 +384,7 @@
                     android:textColor="#000"
                     android:textSize="10dp"/>
                 <EditText
+                    android:tag="F01-12-S2-05"
                     android:id="@+id/etInformationDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

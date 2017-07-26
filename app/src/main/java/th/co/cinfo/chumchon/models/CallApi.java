@@ -1,7 +1,6 @@
 package th.co.cinfo.chumchon.models;
 
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
