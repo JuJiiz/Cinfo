@@ -3,7 +3,6 @@ package th.co.cinfo.chumchon.controllers;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -78,7 +77,7 @@ public class HouseholdActivity extends AppCompatActivity implements View.OnClick
         }
         if (v == btnSearch) {
             strSearch = etSearch.getText().toString();
-            PAGE_NUMBER = ModelGetJson.getSearch(this, STRING_JSONDATA, strSearch, 1, listViewHousehold);
+            PAGE_NUMBER = ModelGetJson.getSearchHouseholdHead(this, STRING_JSONDATA, strSearch, 1, listViewHousehold);
             SearchStatus = true;
         }
     }
@@ -86,13 +85,17 @@ public class HouseholdActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         HashMap<String, String> Item = (HashMap<String, String>) listViewHousehold.getItemAtPosition(position);
-        String SelectedItem = Item.get("taskid").toString();
-        if (!SelectedItem.equals("")) {
+        String SelectedTaskItem = Item.get("taskid").toString();
+        String SelectedStatusItem = Item.get("status").toString();
+        if (SelectedStatusItem.equals("success")) {
             intent = new Intent(getApplicationContext(), TaskgroupF0101Activity.class);
-            intent.putExtra("TaskID", SelectedItem);
+            intent.putExtra("TaskID", SelectedTaskItem);
             startActivity(intent);
-        } else {
-            Toast.makeText(getApplicationContext(), "ยังไม่ทำ เดี๋ยวทำเพิ่ม", Toast.LENGTH_SHORT).show();
+        }else if(SelectedStatusItem.equals("surveying")) {
+            Toast.makeText(getApplicationContext(), "เข้าไปแบบฟอร์ม F01_10", Toast.LENGTH_SHORT).show();
+        }else
+        {
+            Toast.makeText(getApplicationContext(), "Dialog เด้งขึ้น", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -106,7 +109,7 @@ public class HouseholdActivity extends AppCompatActivity implements View.OnClick
         if(SearchStatus = false){
             PAGE_NUMBER = ModelGetJson.getHouseholdHeadJson(this, STRING_JSONDATA, pPage, listViewHousehold);
         }else {
-            PAGE_NUMBER = ModelGetJson.getSearch(this, STRING_JSONDATA, strSearch, pPage, listViewHousehold);
+            PAGE_NUMBER = ModelGetJson.getSearchHouseholdHead(this, STRING_JSONDATA, strSearch, pPage, listViewHousehold);
         }
     }
 

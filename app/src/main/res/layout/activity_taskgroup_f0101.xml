@@ -43,21 +43,21 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textColor="#000"
-            android:text="xxx"/>
+            android:text="ชื่อ"/>
         <TextView
             android:layout_weight="2.5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textColor="#000"
-            android:text="xxx"/>
+            android:text="รหัสประจำตัวประชาชน"/>
         <TextView
             android:layout_weight="1.5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textColor="#000"
-            android:text="xxx"/>
+            android:text="สถานะงาน"/>
     </LinearLayout>
 
     <LinearLayout

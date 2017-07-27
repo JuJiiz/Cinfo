@@ -11,13 +11,16 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.HashMap;
 
 import th.co.cinfo.chumchon.R;
 import th.co.cinfo.chumchon.models.ModelGetData;
 import th.co.cinfo.chumchon.models.ModelGetJson;
 
 public class TaskgroupF0101Activity extends AppCompatActivity implements View.OnClickListener, GestureDetector.OnGestureListener, AdapterView.OnItemClickListener {
-    ListView lvData;
+    ListView lvData, lvDialog;
     Button btnRefresh, btnSearch, btnPrevious, btnNext;
     EditText etSearch;
     int PAGE_NUMBER = 1;
@@ -78,7 +81,7 @@ public class TaskgroupF0101Activity extends AppCompatActivity implements View.On
         }
         if (v == btnSearch) {
             strSearch = etSearch.getText().toString();
-            PAGE_NUMBER = ModelGetJson.getSearch(this, STRING_JSONDATA, strSearch, 1, lvData);
+            PAGE_NUMBER = ModelGetJson.getSearchHouseholdChild(this, STRING_JSONDATA, strSearch, 1, lvData);
             SearchStatus = true;
         }
     }
@@ -89,9 +92,18 @@ public class TaskgroupF0101Activity extends AppCompatActivity implements View.On
         dialog.requestWindowFeature
                 (dialog.getWindow().FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_popup);
-        ListView lvDialog = (ListView) dialog.findViewById(R.id.lvDialog);
+        lvDialog = (ListView) dialog.findViewById(R.id.lvDialog);
         ModelGetJson.getHouseholdChildDialogJson(this, apiURL, whatUWant, taskID, position, lvDialog);
         dialog.show();
+        lvDialog.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                HashMap<String, String> Item = (HashMap<String, String>) lvDialog.getItemAtPosition(position);
+                String SelectedTaskItem = Item.get("task").toString();
+
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     void refreshPage() {
@@ -104,7 +116,7 @@ public class TaskgroupF0101Activity extends AppCompatActivity implements View.On
         if(SearchStatus = false){
             PAGE_NUMBER = ModelGetJson.getHouseholdChildJson(this, STRING_JSONDATA, pPage, lvData);
         }else {
-            PAGE_NUMBER = ModelGetJson.getSearch(this, STRING_JSONDATA, strSearch, pPage, lvData);
+            PAGE_NUMBER = ModelGetJson.getSearchHouseholdChild(this, STRING_JSONDATA, strSearch, pPage, lvData);
         }
     }
 

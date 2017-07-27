@@ -212,7 +212,7 @@ public class ModelGetJson {
         ModelSetAdapterColumn.setChildAdapter(context, LIST, TASK, STATUS, taskID, listView);
     }
 
-    public static int getSearch(Context context, String strJsonObj, String strSearch, int pPage, ListView listView) {
+    public static int getSearchHouseholdHead(Context context, String strJsonObj, String strSearch, int pPage, ListView listView) {
         String CHILD_COLUMN_NUMBER = "number";
         String CHILD_OWNER_NAME_COLUMN = "name";
         String CHILD_STATUS_COLUMN = "status";
@@ -257,4 +257,56 @@ public class ModelGetJson {
         ModelSetAdapterColumn.setHouseholdAdapter(context, LIST, CHILD_COLUMN_NUMBER, CHILD_OWNER_NAME_COLUMN, CHILD_STATUS_COLUMN, CHILD_TASKID_COLUMN, listView);
         return pageIndex;
     }
+
+    public static int getSearchHouseholdChild(Context context, String strJsonObj, String strSearch, int pPage, ListView listView) {
+        String CHILD_COLUMN_NUMBER = "number";
+        String CHILD_OWNER_NAME_COLUMN = "name";
+        String CHILD_STATUS_COLUMN = "status";
+        String CHILD_TASKID_COLUMN = "taskid";
+        String status_count = "count";
+        ArrayList<HashMap<String, String>> LIST;
+        LIST = new ArrayList<HashMap<String, String>>();
+        int pageIndex = 0;
+        int maxItem = 10;
+        try {
+            JSONArray jsonArray = new JSONArray(strJsonObj);
+            if (pPage < 1) {
+                pageIndex = 0;
+            } else if (pPage > Math.ceil(jsonArray.length() / (1.0 * maxItem))) {
+                pageIndex = (int) Math.ceil(jsonArray.length() / (1.0 * maxItem)) - 1;
+            } else {
+                pageIndex = pPage - 1;
+            }
+            for (int i = pageIndex * maxItem; i < jsonArray.length() && i < pageIndex * maxItem + maxItem; i++) {
+                int statusCount = 0, progress = 0;
+                JSONObject jsonObj = jsonArray.getJSONObject(i);
+                String Pid = jsonObj.getString("ID");
+                String Oname = jsonObj.getString("Owner");
+                String Status = jsonObj.getString("status");
+
+                JSONArray tmpJsonArray = new JSONArray(jsonObj.getString("asset"));
+                if (Pid.indexOf(strSearch) >= 0 || Oname.indexOf(strSearch) >= 0) {
+                    HashMap<String, String> temp = new HashMap<String, String>();
+                    temp.put(CHILD_COLUMN_NUMBER, Pid);
+                    temp.put(CHILD_OWNER_NAME_COLUMN, Oname);
+                    temp.put(CHILD_STATUS_COLUMN, Status);
+                    for (int j = 0; j < tmpJsonArray.length(); j++) {
+                        JSONObject jsonObjcheck = tmpJsonArray.getJSONObject(j);
+                        status_count = jsonObjcheck.getString("status");
+                        if (!status_count.equals("wait")) {
+                            statusCount += 1;
+                        }
+                    }
+                    temp.put(CHILD_TASKID_COLUMN, progress + "%");
+                    LIST.add(temp);
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        ModelSetAdapterColumn.setHouseholdAdapter(context, LIST, CHILD_OWNER_NAME_COLUMN, CHILD_COLUMN_NUMBER, CHILD_STATUS_COLUMN, CHILD_TASKID_COLUMN, listView);
+        return pageIndex;
+    }
+
+
 }
