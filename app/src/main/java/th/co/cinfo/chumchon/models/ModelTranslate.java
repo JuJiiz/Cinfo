@@ -5,95 +5,106 @@ package th.co.cinfo.chumchon.models;
  */
 
 public class ModelTranslate {
-    public static void transFormIDtoFormName(String FORMID){
-        String FormName = null;
-        if(FORMID.equals("F01_01"))
-            FormName = "ข้อมูลครัวเรือน";
-        if(FORMID.equals("F01_02"))
-            FormName = "ข้อมูลประชากร";
-        if(FORMID.equals("F01_03"))
-            FormName = "ข้อมูลที่ดิน";
-        if(FORMID.equals("F01_04"))
-            FormName = "ข้อมูลอาคาร";
-        if(FORMID.equals("F01_05"))
-            FormName = "ข้อมูลป้าย";
-        if(FORMID.equals("F01_06"))
-            FormName = "ข้อมูลยุ้งข้าว";
-        if(FORMID.equals("F01_07"))
-            FormName = "ข้อมูลพาหนะ";
-        if(FORMID.equals("F01_08"))
-            FormName = "ข้อมูลกิจการพาณิชย์";
-        if(FORMID.equals("F01_09"))
-            FormName = "ข้อมูลโรงงาน";
-        if(FORMID.equals("F01_10"))
-            FormName = "ข้อมูลตลาด";
-        if(FORMID.equals("F01_11"))
-            FormName = "ข้อมูลที่จำหน่ายอาหาร";
-        if(FORMID.equals("F01_12"))
-            FormName = "ข้อมูลโรงฆ่าสัตว์";
-        if(FORMID.equals("F01_13"))
-            FormName = "ข้อมูลป่าไม้";
-        if(FORMID.equals("F01_14"))
-            FormName = "ข้อมูลเหมืองแร่";
-        if(FORMID.equals("F01_15"))
-            FormName = "ข้อมูลสถานที่ท่องเที่ยว";
-        if(FORMID.equals("F01_16"))
-            FormName = "ข้อมูลสถานที่พักผ่อนหย่อนใจ";
-        if(FORMID.equals("F01_17"))
-            FormName = "ข้อมูลเจ้าของสุสานและฌาปนสถาน";
-        if(FORMID.equals("F01_18"))
-            FormName = "ข้อมูลสถานีจ่ายเชื้อเพลิง";
-        if(FORMID.equals("F01_19"))
-            FormName = "ข้อมูลที่จอดรถ";
-        if(FORMID.equals("F01_20"))
-            FormName = "ข้อมูลห้องน้ำสาธารณะ";
-        if(FORMID.equals("F01_21"))
-            FormName = "ข้อมูลสถานที่ประชุม";
-        if(FORMID.equals("F01_22"))
-            FormName = "ข้อมูลสถานีสื่อสารมวลชน";
-        if(FORMID.equals("F02_01"))
-            FormName = "ข้อมูลองค์กรปกครองส่วนท้องถิ่น";
-        if(FORMID.equals("F02_02"))
-            FormName = "ข้อมูลบุคลากรท้องถิ่น";
-        if(FORMID.equals("F02_03"))
-            FormName = "ข้อมูลโครงการท้องถิ่น";
-        if(FORMID.equals("F02_04"))
-            FormName = "ข้อมูลชุมชน/หมู่บ้าน";
-        if(FORMID.equals("F02_05"))
-            FormName = "ข้อมูลสนามกีฬา";
-        if(FORMID.equals("F02_06"))
-            FormName = "ข้อมูลศาสนสถาน";
-        if(FORMID.equals("F02_07"))
-            FormName = "ข้อมูลสถานศึกษา";
-        if(FORMID.equals("F02_08"))
-            FormName = "ข้อมูลศูนย์การเรียนรู้";
-        if(FORMID.equals("F02_09"))
-            FormName = "ข้อมูลสถานบริการสาธารณสุข";
-        if(FORMID.equals("F02_10"))
-            FormName = "ข้อมูลสถานธนานุบาล";
-        if(FORMID.equals("F02_11"))
-            FormName = "ข้อมูลสถานีขนส่ง";
-        if(FORMID.equals("F02_12"))
-            FormName = "ข้อมูลถนน";
-        if(FORMID.equals("F02_13"))
-            FormName = "ข้อมูลสะพาน";
-        if(FORMID.equals("F02_14"))
-            FormName = "ข้อมูลทางน้ำ";
-        if(FORMID.equals("F02_15"))
-            FormName = "ข้อมูลแหล่งน้ำ";
-        if(FORMID.equals("F02_16"))
-            FormName = "ข้อมูลระบบไฟฟ้า";
-        if(FORMID.equals("F02_17"))
-            FormName = "ข้อมูลระบบประปา";
-        if(FORMID.equals("F02_18"))
-            FormName = "ข้อมูลระบบบำบัดน้ำเสีย";
-        if(FORMID.equals("F02_19"))
-            FormName = "ข้อมูลระบบจัดการขยะ";
-        if(FORMID.equals("F02_20"))
-            FormName = "ข้อมูลระบบแจ้งเตือนภาย";
-        if(FORMID.equals("F02_21"))
-            FormName = "ข้อมูลระบบกล้องวงจรปิด";
-        if(FORMID.equals("F02_22"))
-            FormName = "ข้อมูลภัย";
+    public static String transFormIDtoFormName(String strFORM){
+
+        if(strFORM.equals("F01_01"))
+            strFORM = "ครัวเรือน";
+        if(strFORM.equals("F01_02"))
+            strFORM = "ประชากร";
+        if(strFORM.equals("F01_03"))
+            strFORM = "ที่ดิน";
+        if(strFORM.equals("F01_04"))
+            strFORM = "อาคาร";
+        if(strFORM.equals("F01_05"))
+            strFORM = "ป้าย";
+        if(strFORM.equals("F01_06"))
+            strFORM = "ยุ้งข้าว";
+        if(strFORM.equals("F01_07"))
+            strFORM = "พาหนะ";
+        if(strFORM.equals("F01_08"))
+            strFORM = "กิจการพาณิชย์";
+        if(strFORM.equals("F01_09"))
+            strFORM = "โรงงาน";
+        if(strFORM.equals("F01_10"))
+            strFORM = "ตลาด";
+        if(strFORM.equals("F01_11"))
+            strFORM = "ที่จำหน่ายอาหาร";
+        if(strFORM.equals("F01_12"))
+            strFORM = "โรงฆ่าสัตว์";
+        if(strFORM.equals("F01_13"))
+            strFORM = "ป่าไม้";
+        if(strFORM.equals("F01_14"))
+            strFORM = "หมืองแร่";
+        if(strFORM.equals("F01_15"))
+            strFORM = "สถานที่ท่องเที่ยว";
+        if(strFORM.equals("F01_16"))
+            strFORM = "สถานที่พักผ่อนหย่อนใจ";
+        if(strFORM.equals("F01_17"))
+            strFORM = "เจ้าของสุสานและฌาปนสถาน";
+        if(strFORM.equals("F01_18"))
+            strFORM = "สถานีจ่ายเชื้อเพลิง";
+        if(strFORM.equals("F01_19"))
+            strFORM = "ที่จอดรถ";
+        if(strFORM.equals("F01_20"))
+            strFORM = "ห้องน้ำสาธารณะ";
+        if(strFORM.equals("F01_21"))
+            strFORM = "สถานที่ประชุม";
+        if(strFORM.equals("F01_22"))
+            strFORM = "สถานีสื่อสารมวลชน";
+        if(strFORM.equals("F02_01"))
+            strFORM = "องค์กรปกครองส่วนท้องถิ่น";
+        if(strFORM.equals("F02_02"))
+            strFORM = "บุคลากรท้องถิ่น";
+        if(strFORM.equals("F02_03"))
+            strFORM = "โครงการท้องถิ่น";
+        if(strFORM.equals("F02_04"))
+            strFORM = "ชุมชน/หมู่บ้าน";
+        if(strFORM.equals("F02_05"))
+            strFORM = "สนามกีฬา";
+        if(strFORM.equals("F02_06"))
+            strFORM = "ศาสนสถาน";
+        if(strFORM.equals("F02_07"))
+            strFORM = "สถานศึกษา";
+        if(strFORM.equals("F02_08"))
+            strFORM = "ศูนย์การเรียนรู้";
+        if(strFORM.equals("F02_09"))
+            strFORM = "สถานบริการสาธารณสุข";
+        if(strFORM.equals("F02_10"))
+            strFORM = "สถานธนานุบาล";
+        if(strFORM.equals("F02_11"))
+            strFORM = "สถานีขนส่ง";
+        if(strFORM.equals("F02_12"))
+            strFORM = "ถนน";
+        if(strFORM.equals("F02_13"))
+            strFORM = "สะพาน";
+        if(strFORM.equals("F02_14"))
+            strFORM = "ทางน้ำ";
+        if(strFORM.equals("F02_15"))
+            strFORM = "แหล่งน้ำ";
+        if(strFORM.equals("F02_16"))
+            strFORM = "ระบบไฟฟ้า";
+        if(strFORM.equals("F02_17"))
+            strFORM = "ระบบประปา";
+        if(strFORM.equals("F02_18"))
+            strFORM = "ระบบบำบัดน้ำเสีย";
+        if(strFORM.equals("F02_19"))
+            strFORM = "ระบบจัดการขยะ";
+        if(strFORM.equals("F02_20"))
+            strFORM = "ระบบแจ้งเตือนภาย";
+        if(strFORM.equals("F02_21"))
+            strFORM = "ระบบกล้องวงจรปิด";
+        if(strFORM.equals("F02_22"))
+            strFORM = "ลภัย";
+        return strFORM;
+    }
+
+    public static String transStatus(String strSTATUS){
+        if(strSTATUS.equals("success"))
+            strSTATUS = "บันทึกสำเร็จ";
+        if(strSTATUS.equals("surveying"))
+            strSTATUS = "ระหว่างสำรวจ";
+        if(strSTATUS.equals("waiting"))
+            strSTATUS = "รอการสำรวจ";
+        return strSTATUS;
     }
 }

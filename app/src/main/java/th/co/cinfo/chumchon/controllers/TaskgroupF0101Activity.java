@@ -100,6 +100,7 @@ public class TaskgroupF0101Activity extends AppCompatActivity implements View.On
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 HashMap<String, String> Item = (HashMap<String, String>) lvDialog.getItemAtPosition(position);
                 String SelectedTaskItem = Item.get("task").toString();
+                String SelectedStatusItem = Item.get("status").toString();
 
                 Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem, Toast.LENGTH_SHORT).show();
             }
