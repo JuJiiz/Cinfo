@@ -2,7 +2,9 @@ package th.co.cinfo.chumchon.controllers;
 
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -10,7 +12,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import th.co.cinfo.chumchon.R;
 import th.co.cinfo.chumchon.models.ModelGetJson;
@@ -24,11 +28,13 @@ import th.co.cinfo.chumchon.models.ModelToken;
 public class F01_10Activity extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
     int formProgress = 0;
     //Topic1
-    RadioButton rbPeople, rbCorporate, rbLocalGovernment, rbOtherDepartment;
+    RadioGroup ownerRadioGroup;
+    RadioButton radioButton;
+    //RadioButton rbPeople, rbCorporate, rbLocalGovernment, rbOtherDepartment;
     LinearLayout loPeopleName, loCorporateName, loGovernmentName, loDepartName;
     EditText etFirstName, etLastName, etPersonId, corporateName, localGovernmentName, otherDepartmentName;
     //Topic2
-    EditText etMarketName, etRegisterDate, etBuildingAccessDate, etRegisteredCapital, etNumbersOfEmployment, etLumen, etLampDist, etPropertyRentingYes;
+    EditText etMarketName, etRegisterDate, etBuildingAccessDate, etLandAccessDate, etRegisteredCapital, etNumbersOfEmployment, etLumen, etLampDist, etPropertyRentingYes;
     Spinner spMarketGenre, spVillagesName;
     RadioButton MarketComplaintsYes, MarketComplaintsNo, MarketAssessmentPass, MarketAssessmentFail, MarketDegreeGood, MarketDegreeBest;
     //Topic3
@@ -44,7 +50,7 @@ public class F01_10Activity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_f01_10);
-        ModelToken.checkToken(this);
+        //ModelToken.checkToken(this);
         init();
     }
 
@@ -60,6 +66,7 @@ public class F01_10Activity extends AppCompatActivity implements View.OnClickLis
         etMarketName = (EditText) findViewById(R.id.etMarketName);
         etRegisterDate = (EditText) findViewById(R.id.etRegisterDate);
         etBuildingAccessDate = (EditText) findViewById(R.id.etBuildingAccessDate);
+        etLandAccessDate = (EditText) findViewById(R.id.etLandAccessDate);
         etRegisteredCapital = (EditText) findViewById(R.id.etRegisteredCapital);
         etNumbersOfEmployment = (EditText) findViewById(R.id.etNumbersOfEmployment);
         etLumen = (EditText) findViewById(R.id.etLumen);
@@ -71,10 +78,38 @@ public class F01_10Activity extends AppCompatActivity implements View.OnClickLis
         etInformantTelephone = (EditText) findViewById(R.id.etInformantTelephone);
         etInformationDate = (EditText) findViewById(R.id.etInformationDate);
 
-        rbPeople = (RadioButton) findViewById(R.id.rbPeople);
+        ownerRadioGroup = (RadioGroup) findViewById(R.id.ownerRadioGroup);
+
+        ownerRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                radioButton = (RadioButton) findViewById(ownerRadioGroup.getCheckedRadioButtonId());
+                loPeopleName.setVisibility(View.GONE);
+                loCorporateName.setVisibility(View.GONE);
+                loGovernmentName.setVisibility(View.GONE);
+                loDepartName.setVisibility(View.GONE);
+                if (radioButton.getTag().toString().equals("0")){
+                    loPeopleName.setVisibility(View.VISIBLE);
+                }
+                if (radioButton.getTag().toString().equals("1")){
+                    loCorporateName.setVisibility(View.VISIBLE);
+                }
+                if (radioButton.getTag().toString().equals("2")){
+                    loGovernmentName.setVisibility(View.VISIBLE);
+                }
+                if (radioButton.getTag().toString().equals("3")){
+                    loDepartName.setVisibility(View.VISIBLE);
+                }
+                //Toast.makeText(getApplicationContext(), radioButton.getTag().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        /*rbPeople = (RadioButton) findViewById(R.id.rbPeople);
         rbCorporate = (RadioButton) findViewById(R.id.rbCorporate);
         rbLocalGovernment = (RadioButton) findViewById(R.id.rbLocalGovernment);
-        rbOtherDepartment = (RadioButton) findViewById(R.id.rbOtherDepartment);
+        rbOtherDepartment = (RadioButton) findViewById(R.id.rbOtherDepartment);*/
+
         MarketComplaintsYes = (RadioButton) findViewById(R.id.MarketComplaintsYes);
         MarketComplaintsNo = (RadioButton) findViewById(R.id.MarketComplaintsNo);
         MarketAssessmentPass = (RadioButton) findViewById(R.id.MarketAssessmentPass);
@@ -86,11 +121,10 @@ public class F01_10Activity extends AppCompatActivity implements View.OnClickLis
         PropertyRentingYes = (RadioButton) findViewById(R.id.PropertyRentingYes);
         PropertyRentingNo = (RadioButton) findViewById(R.id.PropertyRentingNo);
 
-        rbPeople.setOnCheckedChangeListener(this);
+        /*rbPeople.setOnCheckedChangeListener(this);
         rbCorporate.setOnCheckedChangeListener(this);
         rbLocalGovernment.setOnCheckedChangeListener(this);
-        rbOtherDepartment.setOnCheckedChangeListener(this);
-
+        rbOtherDepartment.setOnCheckedChangeListener(this);*/
 
         loPeopleName = (LinearLayout) findViewById(R.id.loPeopleName);
         loCorporateName = (LinearLayout) findViewById(R.id.loCorporateName);
@@ -107,7 +141,7 @@ public class F01_10Activity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void requireCheck() {
-        String strFirstName = etFirstName.getText().toString();
+        /*String strFirstName = etFirstName.getText().toString();
         String strLastName = etLastName.getText().toString();
         String strPersonID = etPersonId.getText().toString();
         String strCorporate = rbCorporate.getText().toString();
@@ -170,7 +204,7 @@ public class F01_10Activity extends AppCompatActivity implements View.OnClickLis
         if (!MarketDegreeGood.isChecked() || !MarketDegreeBest.isChecked()) {
         } else {
             formProgress++;
-        }
+        }*/
     }
 
     @Override
@@ -180,14 +214,7 @@ public class F01_10Activity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        loPeopleName.setVisibility(View.GONE);
-        loCorporateName.setVisibility(View.GONE);
-        loGovernmentName.setVisibility(View.GONE);
-        loDepartName.setVisibility(View.GONE);
-        if (rbPeople.isChecked()) loPeopleName.setVisibility(View.VISIBLE);
-        if (rbCorporate.isChecked()) loCorporateName.setVisibility(View.VISIBLE);
-        if (rbLocalGovernment.isChecked()) loGovernmentName.setVisibility(View.VISIBLE);
-        if (rbOtherDepartment.isChecked()) loDepartName.setVisibility(View.VISIBLE);
+        /**/
     }
 
     public void submit(){
@@ -212,40 +239,10 @@ public class F01_10Activity extends AppCompatActivity implements View.OnClickLis
         modelSendApi.add(etInformantTelephone.getTag().toString(),etInformantTelephone.getText().toString());
         modelSendApi.add(etInformationDate.getTag().toString(),etInformationDate.getText().toString());
 
-        rbPeople = (RadioButton) findViewById(R.id.rbPeople);
-        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
-        rbCorporate = (RadioButton) findViewById(R.id.rbCorporate);
-        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
-        rbLocalGovernment = (RadioButton) findViewById(R.id.rbLocalGovernment);
-        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
-        rbOtherDepartment = (RadioButton) findViewById(R.id.rbOtherDepartment);
-        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
-        MarketComplaintsYes = (RadioButton) findViewById(R.id.MarketComplaintsYes);
-        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
-        MarketComplaintsNo = (RadioButton) findViewById(R.id.MarketComplaintsNo);
-        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
-        MarketAssessmentPass = (RadioButton) findViewById(R.id.MarketAssessmentPass);
-        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
-        MarketAssessmentFail = (RadioButton) findViewById(R.id.MarketAssessmentFail);
-        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
-        MarketDegreeGood = (RadioButton) findViewById(R.id.MarketDegreeGood);
-        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
-        MarketDegreeBest = (RadioButton) findViewById(R.id.MarketDegreeBest);
-        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
-        MarketRentingYes = (RadioButton) findViewById(R.id.MarketRentingYes);
-        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
-        MarketRentingNo = (RadioButton) findViewById(R.id.MarketRentingNo);
-        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
-        PropertyRentingYes = (RadioButton) findViewById(R.id.PropertyRentingYes);
-        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
-        PropertyRentingNo = (RadioButton) findViewById(R.id.PropertyRentingNo);
-        modelSendApi.add(etLastName.getTag().toString(),etLastName.getText().toString());
-
-        rbPeople.setOnCheckedChangeListener(this);
+        /*rbPeople.setOnCheckedChangeListener(this);
         rbCorporate.setOnCheckedChangeListener(this);
         rbLocalGovernment.setOnCheckedChangeListener(this);
-        rbOtherDepartment.setOnCheckedChangeListener(this);
-
+        rbOtherDepartment.setOnCheckedChangeListener(this);*/
 
         loPeopleName = (LinearLayout) findViewById(R.id.loPeopleName);
         loCorporateName = (LinearLayout) findViewById(R.id.loCorporateName);

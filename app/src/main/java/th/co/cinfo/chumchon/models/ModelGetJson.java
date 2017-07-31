@@ -192,10 +192,8 @@ public class ModelGetJson {
             String strJsonObj = ModelGetData.getHouseholdJsonArray(context, apiURL, pKey, taskID);
             JSONArray jsonArray = new JSONArray(strJsonObj);
             JSONObject jsonObj = jsonArray.getJSONObject(Position);
-            transTASK = ModelTranslate.transFormIDtoFormName(jsonObj.getString("task"));
-            transSTATUS = ModelTranslate.transStatus(jsonObj.getString("status"));
-            temp.put(TASK, transTASK);
-            temp.put(STATUS, transSTATUS);
+            temp.put(TASK, jsonObj.getString("task"));
+            temp.put(STATUS, jsonObj.getString("status"));
 
             LIST.add(temp);
 
@@ -204,10 +202,8 @@ public class ModelGetJson {
                 for (int j = 0; j < tmpJsonArray.length(); j++) {
                     temp = new HashMap<String, String>();
                     JSONObject jsonObjChild = tmpJsonArray.getJSONObject(j);
-                    transTASK = ModelTranslate.transFormIDtoFormName(jsonObjChild.getString("task"));
-                    transSTATUS = ModelTranslate.transStatus(jsonObjChild.getString("status"));
-                    temp.put(TASK, transTASK);
-                    temp.put(STATUS, transSTATUS);
+                    temp.put(TASK, jsonObjChild.getString("task"));
+                    temp.put(STATUS, jsonObjChild.getString("status"));
                     LIST.add(temp);
                 }
             }

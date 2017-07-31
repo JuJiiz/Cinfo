@@ -26,9 +26,7 @@ public class TaskgroupF0101Activity extends AppCompatActivity implements View.On
     int PAGE_NUMBER = 1;
     String apiURL = "https://api.cinfo.co.th/v3/getGroupAsset_T1?";
     String whatUWant = "data";
-    String taskID;
-    String STRING_JSONDATA;
-    String strSearch;
+    String taskID, STRING_JSONDATA, strSearch, SelectedTaskItem, SelectedStatusItem;
     Boolean SearchStatus = false;
     Intent intent;
     GestureDetector gestureScanner;
@@ -99,12 +97,152 @@ public class TaskgroupF0101Activity extends AppCompatActivity implements View.On
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 HashMap<String, String> Item = (HashMap<String, String>) lvDialog.getItemAtPosition(position);
-                String SelectedTaskItem = Item.get("task").toString();
-                String SelectedStatusItem = Item.get("status").toString();
-
-                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem, Toast.LENGTH_SHORT).show();
+                SelectedTaskItem = Item.get("task").toString();
+                SelectedStatusItem = Item.get("status").toString();
+                checkForm();
+                dialog.dismiss();
+                TaskgroupF0101Activity.this.startActivity(intent);
             }
         });
+    }
+    void checkForm(){
+        if(!SelectedStatusItem.equals("waiting")) {
+            if (SelectedTaskItem.equals("F01_01")) {
+
+            }
+            if (SelectedTaskItem.equals("F01_02")) {
+
+            }
+            if (SelectedTaskItem.equals("F01_03")) {
+
+            }
+            if (SelectedTaskItem.equals("F01_04")) {
+
+            }
+            if (SelectedTaskItem.equals("F01_05")) {
+
+            }
+            if (SelectedTaskItem.equals("F01_06")) {
+
+            }
+            if (SelectedTaskItem.equals("F01_07")) {
+
+            }
+            if (SelectedTaskItem.equals("F01_08")) {
+
+            }
+            if (SelectedTaskItem.equals("F01_09")) {
+
+            }
+            if (SelectedTaskItem.equals("F01_10")) {
+                //Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
+                intent = new Intent(TaskgroupF0101Activity.this, F01_10Activity.class);
+            }
+            if (SelectedTaskItem.equals("F01_11")) {
+
+            }
+            if (SelectedTaskItem.equals("F01_12")) {
+                intent = new Intent(TaskgroupF0101Activity.this, F01_12Activity.class);
+            }
+            if (SelectedTaskItem.equals("F01_13")) {
+
+            }
+            if (SelectedTaskItem.equals("F01_14")) {
+
+            }
+            if (SelectedTaskItem.equals("F01_15")) {
+
+            }
+            if (SelectedTaskItem.equals("F01_16")) {
+
+            }
+            if (SelectedTaskItem.equals("F01_17")) {
+
+            }
+            if (SelectedTaskItem.equals("F01_18")) {
+
+            }
+            if (SelectedTaskItem.equals("F01_19")) {
+
+            }
+            if (SelectedTaskItem.equals("F01_20")) {
+
+            }
+            if (SelectedTaskItem.equals("F01_21")) {
+
+            }
+            if (SelectedTaskItem.equals("F01_22")) {
+
+            }
+            if (SelectedTaskItem.equals("F02_01")) {
+
+            }
+            if (SelectedTaskItem.equals("F02_02")) {
+
+            }
+            if (SelectedTaskItem.equals("F02_03")) {
+
+            }
+            if (SelectedTaskItem.equals("F02_04")) {
+
+            }
+            if (SelectedTaskItem.equals("F02_05")) {
+
+            }
+            if (SelectedTaskItem.equals("F02_06")) {
+
+            }
+            if (SelectedTaskItem.equals("F02_07")) {
+
+            }
+            if (SelectedTaskItem.equals("F02_08")) {
+
+            }
+            if (SelectedTaskItem.equals("F02_09")) {
+
+            }
+            if (SelectedTaskItem.equals("F02_10")) {
+
+            }
+            if (SelectedTaskItem.equals("F02_11")) {
+
+            }
+            if (SelectedTaskItem.equals("F02_12")) {
+
+            }
+            if (SelectedTaskItem.equals("F02_13")) {
+
+            }
+            if (SelectedTaskItem.equals("F02_14")) {
+
+            }
+            if (SelectedTaskItem.equals("F02_15")) {
+
+            }
+            if (SelectedTaskItem.equals("F02_16")) {
+
+            }
+            if (SelectedTaskItem.equals("F02_17")) {
+
+            }
+            if (SelectedTaskItem.equals("F02_18")) {
+
+            }
+            if (SelectedTaskItem.equals("F02_19")) {
+
+            }
+            if (SelectedTaskItem.equals("F02_20")) {
+
+            }
+            if (SelectedTaskItem.equals("F02_21")) {
+
+            }
+            if (SelectedTaskItem.equals("F02_22")) {
+
+            }
+        }else{
+            Toast.makeText(TaskgroupF0101Activity.this, SelectedStatusItem, Toast.LENGTH_SHORT).show();
+        }
     }
 
     void refreshPage() {

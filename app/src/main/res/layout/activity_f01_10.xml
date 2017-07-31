@@ -50,11 +50,13 @@
 
                 <RadioGroup
                     android:id="@+id/ownerRadioGroup"
+                    android:tag="F01-10-01"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <RadioButton
                         android:id="@+id/rbPeople"
+                        android:tag="0"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ประชาชน" />
@@ -68,6 +70,7 @@
 
                         <EditText
                             android:id="@+id/etFirstName"
+                            android:tag="F01-10-01-01-01"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="ชื่อต้น"
@@ -75,6 +78,7 @@
 
                         <EditText
                             android:id="@+id/etLastName"
+                            android:tag="F01-10-01-01-02"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="ชื่อสกุล"
@@ -82,6 +86,7 @@
 
                         <EditText
                             android:id="@+id/etPersonId"
+                            android:tag="F01-10-01-01-03"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="เลขประจำตัวประชาชน"
@@ -90,6 +95,7 @@
 
                     <RadioButton
                         android:id="@+id/rbCorporate"
+                        android:tag="1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="นิติบุคคล" />
@@ -103,6 +109,7 @@
 
                         <EditText
                             android:id="@+id/corporateName"
+                            android:tag="F01-10-01-02-01"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="ชื่อนิติบุคคล"
@@ -111,6 +118,7 @@
 
                     <RadioButton
                         android:id="@+id/rbLocalGovernment"
+                        android:tag="2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="องค์กรปกครองท้องถิ่น" />
@@ -124,6 +132,7 @@
 
                         <EditText
                             android:id="@+id/localGovernmentName"
+                            android:tag="F01-10-01-03-01"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:hint="ชื่อ อปท."
@@ -132,6 +141,7 @@
 
                     <RadioButton
                         android:id="@+id/rbOtherDepartment"
+                        android:tag="3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="หน่วยงานอื่น ๆ (ระบุ)" />
@@ -145,6 +155,7 @@
 
                         <EditText
                             android:id="@+id/otherDepartmentName"
+                            android:tag="F01-10-01-04-01"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="ชื่อหน่วยงาน"
@@ -170,6 +181,7 @@
 
                 <EditText
                     android:id="@+id/etMarketName"
+                    android:tag="F01-10-02"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="ชื่อตลาด *"
@@ -177,6 +189,7 @@
 
                 <EditText
                     android:id="@+id/etRegisterDate"
+                    android:tag="F01-10-04"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="จดทะเบียนเมื่อวันที่"
@@ -194,6 +207,7 @@
                         android:textColor="#000" />
                     <Spinner
                         android:id="@+id/spMarketGenre"
+                        android:tag="F01-10-05"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"></Spinner>
                 </LinearLayout>
@@ -230,6 +244,7 @@
 
                     <Spinner
                         android:id="@+id/spVillagesName"
+                        android:tag="F10_village_select"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"></Spinner>
 
@@ -237,9 +252,18 @@
 
                 <EditText
                     android:id="@+id/etBuildingAccessDate"
+                    android:tag="F01-10-10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="เข้าใช้อาคารเมื่อวันที่เมื่อวันที่"
+                    android:hint="เข้าใช้อาคารเมื่อวันที่"
+                    android:inputType="date" />
+
+                <EditText
+                    android:id="@+id/etLandAccessDate"
+                    android:tag="F01-10-12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="เข้าใช้ที่ดินเมื่อวันที่"
                     android:inputType="date" />
 
                 <TextView
@@ -251,6 +275,7 @@
 
                 <EditText
                     android:id="@+id/etRegisteredCapital"
+                    android:tag="F01-10-13"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="บาท"
@@ -266,6 +291,7 @@
 
                 <EditText
                     android:id="@+id/etNumbersOfEmployment"
+                    android:tag="F01-10-14"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="คน"
@@ -289,6 +315,7 @@
 
                     <RadioButton
                         android:id="@+id/MarketComplaintsYes"
+                        android:tag="F01-10-15"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -296,6 +323,7 @@
 
                     <RadioButton
                         android:id="@+id/MarketComplaintsNo"
+                        android:tag="F01-10-15"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.2"
@@ -320,6 +348,7 @@
 
                     <RadioButton
                         android:id="@+id/MarketAssessmentPass"
+                        android:tag="F01-10-16"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -327,6 +356,7 @@
 
                     <RadioButton
                         android:id="@+id/MarketAssessmentFail"
+                        android:tag="F01-10-16"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.2"
@@ -351,6 +381,7 @@
 
                     <RadioButton
                         android:id="@+id/MarketDegreeGood"
+                        android:tag="F01-10-17"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -358,6 +389,7 @@
 
                     <RadioButton
                         android:id="@+id/MarketDegreeBest"
+                        android:tag="F01-10-17"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.2"
@@ -399,6 +431,7 @@
 
                     <RadioButton
                         android:id="@+id/MarketRentingYes"
+                        android:tag="F01-10-18"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2.5"
@@ -406,6 +439,7 @@
 
                     <RadioButton
                         android:id="@+id/MarketRentingNo"
+                        android:tag="F01-10-18"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.5"
@@ -435,6 +469,7 @@
 
                     <EditText
                         android:id="@+id/etLumen"
+                        android:tag="F01-10-19"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -456,6 +491,7 @@
 
                     <EditText
                         android:id="@+id/etLampDist"
+                        android:tag="F01-10-20"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -488,6 +524,7 @@
 
                     <RadioButton
                         android:id="@+id/PropertyRentingYes"
+                        android:tag="F01-10-L"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2.5"
@@ -495,6 +532,7 @@
 
                     <RadioButton
                         android:id="@+id/PropertyRentingNo"
+                        android:tag="F01-10-L"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.5"
@@ -521,12 +559,14 @@
 
                     <Spinner
                         android:id="@+id/spRentStatus"
+                        android:tag="F01-10-L-01"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"></Spinner>
                 </LinearLayout>
 
                 <EditText
                     android:id="@+id/etPropertyRentingYes"
+                    android:tag="F01-10-phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="เบอร์โทรศัพท์สำหรับติดต่อประสานงาน" />
@@ -570,6 +610,7 @@
 
                 <EditText
                     android:id="@+id/etInformantFirstName"
+                    android:tag="F01-10-S2-01"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="ชื่อ"
@@ -577,6 +618,7 @@
 
                 <EditText
                     android:id="@+id/etInformantLastName"
+                    android:tag="F01-10-S2-02"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="นามสกุล"
@@ -584,6 +626,7 @@
 
                 <EditText
                     android:id="@+id/etInformantPosition"
+                    android:tag="F01-10-S2-03"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="ตำแหน่ง"
@@ -591,6 +634,7 @@
 
                 <EditText
                     android:id="@+id/etInformantTelephone"
+                    android:tag="F01-10-S2-04"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="เบอร์โทร"
@@ -598,6 +642,7 @@
 
                 <EditText
                     android:id="@+id/etInformationDate"
+                    android:tag="F01-10-S2-05"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="วันเดือนปีที่ให้ข้อมูล"
