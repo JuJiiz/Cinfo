@@ -18,6 +18,7 @@ import java.util.HashMap;
 import th.co.cinfo.chumchon.R;
 import th.co.cinfo.chumchon.models.ModelGetData;
 import th.co.cinfo.chumchon.models.ModelGetJson;
+import th.co.cinfo.chumchon.models.ModelToken;
 
 public class TaskgroupF0101Activity extends AppCompatActivity implements View.OnClickListener, GestureDetector.OnGestureListener, AdapterView.OnItemClickListener {
     ListView lvData, lvDialog;
@@ -35,6 +36,7 @@ public class TaskgroupF0101Activity extends AppCompatActivity implements View.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_taskgroup_f0101);
+        ModelToken.checkToken(this);
         taskID = getIntent().getExtras().getString("TaskID");
         init();
         //ModelGetJson.getHouseholdChildJson(this, apiURL, whatUWant, taskID, lvData);
@@ -101,6 +103,7 @@ public class TaskgroupF0101Activity extends AppCompatActivity implements View.On
                 SelectedStatusItem = Item.get("status").toString();
                 checkForm();
                 dialog.dismiss();
+                if(intent!=null)
                 TaskgroupF0101Activity.this.startActivity(intent);
             }
         });
@@ -108,137 +111,136 @@ public class TaskgroupF0101Activity extends AppCompatActivity implements View.On
     void checkForm(){
         if(!SelectedStatusItem.equals("waiting")) {
             if (SelectedTaskItem.equals("F01_01")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F01_02")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F01_03")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F01_04")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F01_05")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F01_06")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F01_07")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F01_08")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F01_09")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F01_10")) {
-                //Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
                 intent = new Intent(TaskgroupF0101Activity.this, F01_10Activity.class);
             }
             if (SelectedTaskItem.equals("F01_11")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F01_12")) {
                 intent = new Intent(TaskgroupF0101Activity.this, F01_12Activity.class);
             }
             if (SelectedTaskItem.equals("F01_13")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F01_14")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F01_15")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F01_16")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F01_17")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F01_18")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F01_19")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F01_20")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F01_21")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F01_22")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F02_01")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F02_02")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F02_03")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F02_04")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F02_05")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F02_06")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F02_07")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F02_08")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F02_09")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F02_10")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F02_11")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F02_12")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F02_13")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F02_14")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F02_15")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F02_16")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F02_17")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F02_18")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F02_19")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F02_20")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F02_21")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
             if (SelectedTaskItem.equals("F02_22")) {
-
+                Toast.makeText(TaskgroupF0101Activity.this, SelectedTaskItem + "A", Toast.LENGTH_SHORT).show();
             }
         }else{
             Toast.makeText(TaskgroupF0101Activity.this, SelectedStatusItem, Toast.LENGTH_SHORT).show();

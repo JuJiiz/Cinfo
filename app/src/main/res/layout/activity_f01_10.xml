@@ -119,7 +119,7 @@
                     <RadioButton
                         android:id="@+id/rbLocalGovernment"
                         android:tag="2"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="องค์กรปกครองท้องถิ่น" />
 
@@ -222,8 +222,8 @@
                     android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:background="#e5e5e5">
-                </com.google.android.gms.maps.MapView>
+                    android:background="#e5e5e5"
+                    android:apiKey="AIzaSyDn-47uCgeuAj7c0KfuYKgXBF3r0Gylsk0"/>
                 <Button
                     android:id="@+id/btnGetPosition"
                     android:layout_width="match_parent"
@@ -306,6 +306,7 @@
 
                     <TextView
                         android:id="@+id/tvMarketComplaints"
+                        android:tag="F01-10-15"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2.8"
@@ -315,7 +316,7 @@
 
                     <RadioButton
                         android:id="@+id/MarketComplaintsYes"
-                        android:tag="F01-10-15"
+                        android:tag="0"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -323,7 +324,7 @@
 
                     <RadioButton
                         android:id="@+id/MarketComplaintsNo"
-                        android:tag="F01-10-15"
+                        android:tag="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.2"
@@ -332,6 +333,7 @@
 
                 <RadioGroup
                     android:id="@+id/rdgMarketAssessment"
+                    android:tag="F01-10-16"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -348,7 +350,7 @@
 
                     <RadioButton
                         android:id="@+id/MarketAssessmentPass"
-                        android:tag="F01-10-16"
+                        android:tag="0"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -356,7 +358,7 @@
 
                     <RadioButton
                         android:id="@+id/MarketAssessmentFail"
-                        android:tag="F01-10-16"
+                        android:tag="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.2"
@@ -365,6 +367,7 @@
 
                 <RadioGroup
                     android:id="@+id/rdgMarketDegree"
+                    android:tag="F01-10-17"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -381,7 +384,7 @@
 
                     <RadioButton
                         android:id="@+id/MarketDegreeGood"
-                        android:tag="F01-10-17"
+                        android:tag="0"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -389,7 +392,7 @@
 
                     <RadioButton
                         android:id="@+id/MarketDegreeBest"
-                        android:tag="F01-10-17"
+                        android:tag="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.2"
@@ -415,6 +418,7 @@
 
                 <RadioGroup
                     android:id="@+id/rdgMarketRenting"
+                    android:tag="F01-10-18"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -431,7 +435,7 @@
 
                     <RadioButton
                         android:id="@+id/MarketRentingYes"
-                        android:tag="F01-10-18"
+                        android:tag="0"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2.5"
@@ -439,7 +443,7 @@
 
                     <RadioButton
                         android:id="@+id/MarketRentingNo"
-                        android:tag="F01-10-18"
+                        android:tag="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.5"
@@ -508,6 +512,7 @@
 
                 <RadioGroup
                     android:id="@+id/rdgPropertyRenting"
+                    android:tag="F01-10-L"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -524,7 +529,7 @@
 
                     <RadioButton
                         android:id="@+id/PropertyRentingYes"
-                        android:tag="F01-10-L"
+                        android:tag="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2.5"
@@ -532,7 +537,7 @@
 
                     <RadioButton
                         android:id="@+id/PropertyRentingNo"
-                        android:tag="F01-10-L"
+                        android:tag="0"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.5"
@@ -565,7 +570,7 @@
                 </LinearLayout>
 
                 <EditText
-                    android:id="@+id/etPropertyRentingYes"
+                    android:id="@+id/etRentingTel"
                     android:tag="F01-10-phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
