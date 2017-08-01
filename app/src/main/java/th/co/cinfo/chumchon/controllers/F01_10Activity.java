@@ -1,6 +1,7 @@
 package th.co.cinfo.chumchon.controllers;
 
 import android.Manifest;
+import android.app.FragmentTransaction;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -42,23 +44,9 @@ import th.co.cinfo.chumchon.models.ModelToken;
  * Created by JuJiiz on 26/7/2560.
  */
 
-public class F01_10Activity extends AppCompatActivity implements View.OnClickListener, LocationListener {
+public class F01_10Activity extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback{
     int formProgress = 0;
     Button btnSavingData;
-    private GoogleMap googleMap;
-
-    LocationManager locationManager;
-    LocationListener locationListener;
-    Double Latitude = 0.00;
-    Double Longitude = 0.00;
-
-    private static final LatLng ONE = new LatLng(32.882216, -117.222028);
-    /*private static final LatLng TWO = new LatLng(32.872000, -117.232004);
-    private static final LatLng THREE = new LatLng(32.880252, -117.233034);
-    private static final LatLng FOUR = new LatLng(32.885200, -117.226003);*/
-
-    private ArrayList<LatLng> coords = new ArrayList<LatLng>();
-    //private static final int POINTS = 4;
 
     //Topic1
     RadioGroup ownerRadioGroup;
@@ -70,7 +58,6 @@ public class F01_10Activity extends AppCompatActivity implements View.OnClickLis
     Spinner spMarketGenre, spVillagesName;
     RadioGroup rdgMarketComplaints, rdgMarketAssessment, rdgMarketDegree;
     RadioButton rbMarketComplaints, rdMarketAssessment, rdMarketDegree;
-    MapView mapMapMap;
     Button btnGetPosition;
     //Topic3
     RadioGroup rdgMarketRenting, rdgPropertyRenting;
@@ -89,34 +76,18 @@ public class F01_10Activity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_f01_10);
         ModelToken.checkToken(this);
         init();
-        locationManager = (LocationManager) getSystemService(this.LOCATION_SERVICE);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
 
-        /*mapMapMap.onCreate(savedInstanceState);
-        mapMapMap.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(GoogleMap googleMap) {
-                setUpMap(googleMap);
-            }
-        });*/
+        MapFragment mapFragment = MapFragment.newInstance();
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.fragment_map_container, mapFragment);
+        fragmentTransaction.commit();
+        mapFragment.getMapAsync(this);
     }
 
     private void init() {
         btnSavingData = (Button) findViewById(R.id.btnSavingData);
         btnGetPosition = (Button) findViewById(R.id.btnGetPosition);
         etPropertyPhoto = (Button) findViewById(R.id.etPropertyPhoto);
-
-        mapMapMap = (MapView) findViewById(R.id.mapMapMap);
 
         etFirstName = (EditText) findViewById(R.id.etFirstName);
         etLastName = (EditText) findViewById(R.id.etLastName);
@@ -342,52 +313,8 @@ public class F01_10Activity extends AppCompatActivity implements View.OnClickLis
         ivImageUpload = (ImageView) findViewById(R.id.ivImageUpload);
     }
 
-    /*private void setUpMap(GoogleMap map) {
-        googleMap = map;
-
-        coords.add(ONE);
-        for (int i = 0; i < 1; i++) {
-            googleMap.addMarker(new MarkerOptions()
-                    .position(coords.get(i))
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-        }
-    }*/
-
     @Override
-    public void onLocationChanged(Location location) {
+    public void onMapReady(GoogleMap googleMap) {
 
-        if (location == null) { return; }
-
-        //** Get Latitude & Longitude
-        Latitude = location.getLatitude();
-        Longitude= location.getLongitude();
-
-        googleMap.clear();
-
-        //*** Focus & Zoom
-        LatLng coordinate = new LatLng(Latitude, Longitude);
-        googleMap.setMapType(com.google.android.gms.maps.GoogleMap.MAP_TYPE_HYBRID);
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinate, 17));
-
-        //*** Marker
-        MarkerOptions marker = new MarkerOptions()
-                .position(new LatLng(Latitude, Longitude)).title("Your current location");
-        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker));
-        googleMap.addMarker(marker);
-    }
-
-    @Override
-    public void onProviderDisabled(String provider) {
-        // Log.d("Latitude","disable");
-    }
-
-    @Override
-    public void onProviderEnabled(String provider) {
-        // Log.d("Latitude","enable");
-    }
-
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-        // Log.d("Latitude","status");
     }
 }
