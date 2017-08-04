@@ -218,20 +218,22 @@
                     android:text="ตำแหน่งที่ตั้ง"
                     android:textColor="#000" />
 
-                <FrameLayout
+                <!--<FrameLayout
                     android:id="@+id/fragment_map_container"
                     android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:background="#e5e5e5" />
+                    android:background="#e5e5e5" />-->
 
-                <!--<fragment
-                    android:id="@+id/mapMapMap"
-                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                <fragment
+                    android:id="@+id/googleMap"
                     android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:background="#e5e5e5"/>-->
+                    android:background="#e5e5e5"
+                    tools:context=".MapLocationActivity"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
                 <!--<com.google.android.gms.maps.MapView
                     android:id="@+id/mapMapMap"
                     android:layout_margin="10dp"
@@ -239,6 +241,7 @@
                     android:layout_height="150dp"
                     android:background="#e5e5e5"
                     android:apiKey="AIzaSyDn-47uCgeuAj7c0KfuYKgXBF3r0Gylsk0"/>-->
+
                 <Button
                     android:id="@+id/btnGetPosition"
                     android:layout_width="match_parent"
